@@ -22,6 +22,8 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { useState } from "react"
 import { X } from "lucide-react"
+import { HeroServices } from "@/components/HeroServices"
+import { Footer } from "@/components/Footer"
 
 // Types
 interface Feature {
@@ -378,31 +380,8 @@ function ServiceDetailModal({
 export default function ServicesPage() {
   const [selectedService, setSelectedService] = useState<Service | null>(null)
   return (
-    <div className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
-            Core <span className="gradient-text">Services</span>
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            Comprehensive technology solutions tailored to protect your business from evolving cyber threats. While our
-            expertise spans a wide range of IT services, our core strength lies in cybersecurity.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-primary hover:bg-primary/90">
-              Get Free Consultation
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-primary text-primary hover:bg-primary hover:text-white bg-transparent"
-            >
-              View All Services
-            </Button>
-          </div>
-        </div>
-      </section>
+    <main className="min-h-screen bg-background">
+      <HeroServices />
 
       {/* Services Grid */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
@@ -417,48 +396,51 @@ export default function ServicesPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, index) => (
-              <Card
+              <div
                 key={index}
-                className="bg-card border-border hover:border-primary/50 transition-all duration-300 group relative overflow-hidden"
+                className="stagger-item card-interactive group relative overflow-hidden"
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
-                {service.popular && (
-                  <Badge className="absolute top-4 right-4 bg-primary text-primary-foreground">Popular</Badge>
-                )}
-                <CardHeader className="pb-4">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
-                      <service.icon className="h-6 w-6 text-primary" />
-                    </div>
-                    <Badge variant="outline" className="text-xs">
-                      {service.category}
-                    </Badge>
-                  </div>
-                  <CardTitle className="text-xl text-foreground group-hover:text-primary transition-colors">
-                    {service.title}
-                  </CardTitle>
-                  <CardDescription className="text-muted-foreground">{service.description}</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  {/* Show quick bullet of first 3 feature titles */}
-                  <div className="space-y-2">
-                    {service.features.slice(0, 3).map((feature, featureIndex) => (
-                      <div key={featureIndex} className="flex items-center text-sm text-muted-foreground">
-                        <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2 flex-shrink-0" />
-                        {feature.title}
+                <Card className="bg-card border-border hover:border-primary/50 transition-all duration-300 h-full">
+                  {service.popular && (
+                    <Badge className="absolute top-4 right-4 bg-primary text-primary-foreground animate-bounce-in">Popular</Badge>
+                  )}
+                  <CardHeader className="pb-4">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors hover-scale">
+                        <service.icon className="h-6 w-6 text-primary" />
                       </div>
-                    ))}
-                  </div>
-                  <div className="pt-4 border-t border-border">
-                    <Button
-                      className="w-full bg-primary hover:bg-primary/90"
-                      size="sm"
-                      onClick={() => setSelectedService(service)}
-                    >
-                      Learn More
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+                      <Badge variant="outline" className="text-xs hover-glow">
+                        {service.category}
+                      </Badge>
+                    </div>
+                    <CardTitle className="text-xl text-foreground group-hover:text-primary transition-colors">
+                      {service.title}
+                    </CardTitle>
+                    <CardDescription className="text-muted-foreground">{service.description}</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    {/* Show quick bullet of first 3 feature titles */}
+                    <div className="space-y-2">
+                      {service.features.slice(0, 3).map((feature, featureIndex) => (
+                        <div key={featureIndex} className="flex items-center text-sm text-muted-foreground">
+                          <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2 flex-shrink-0 animate-pulse" />
+                          {feature.title}
+                        </div>
+                      ))}
+                    </div>
+                    <div className="pt-4 border-t border-border">
+                      <Button
+                        className="w-full bg-primary hover:bg-primary/90 hover-glow"
+                        size="sm"
+                        onClick={() => setSelectedService(service)}
+                      >
+                        Learn More
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
             ))}
           </div>
         </div>
@@ -491,6 +473,8 @@ export default function ServicesPage() {
       {selectedService && (
         <ServiceDetailModal service={selectedService} isOpen={!!selectedService} onClose={() => setSelectedService(null)} />
       )}
-    </div>
+
+      <Footer />
+    </main>
   )
 }

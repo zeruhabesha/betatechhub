@@ -10,6 +10,8 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { HeroContact } from "@/components/HeroContact"
+import { Footer } from "@/components/Footer"
 
 const contactInfo = [
   {
@@ -77,21 +79,8 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-4">
-            Contact <span className="gradient-text">Us</span>
-          </h1>
-          <p className="text-xl text-[#1F7A8C] mb-2">
-            ያግኙን
-          </p>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            Let's talk security and growth. Ready to secure your Ethiopian business? Our cybersecurity experts in Addis Ababa are ready to help with a free consultation and personalized security assessment.
-          </p>
-        </div>
-      </section>
+    <main className="min-h-screen bg-background">
+      <HeroContact />
 
       {/* Contact Info Cards */}
       <section className="py-12 px-4 sm:px-6 lg:px-8">
@@ -144,7 +133,7 @@ export default function ContactPage() {
             <div>
               <div className="mb-8">
                 <h2 className="text-3xl font-bold text-foreground mb-2">Send Us a Message</h2>
-                <p className="text-[#1F7A8C] mb-2">መልእክት ይላኩልን</p>
+                <p className="text-primary mb-2">መልእክት ይላኩልን</p>
                 <p className="text-muted-foreground">
                   Fill out the form below in English or Amharic and we'll respond within 24 hours. For urgent security matters,
                   please call our Ethiopian emergency line at +251 911 123 456.
@@ -296,6 +285,8 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-    </div>
+
+      <Footer />
+    </main>
   )
 }

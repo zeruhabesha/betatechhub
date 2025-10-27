@@ -5,6 +5,8 @@ import { BookOpen, Download, ExternalLink, Shield, Lock, Eye } from "lucide-reac
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import { HeroResources } from "@/components/HeroResources"
+import { Footer } from "@/components/Footer"
 
 const resources = [
   {
@@ -194,19 +196,8 @@ const webinars = [
 
 export default function ResourcesPage() {
   return (
-    <div className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-2">
-            Security <span className="gradient-text">Resources</span>
-          </h1>
-          <p className="text-xl text-[#1F7A8C] mb-2">የደህንነት ምንጮች</p>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            Access our comprehensive library of cybersecurity resources, tools, and educational materials tailored for Ethiopian businesses to strengthen your organization's security posture.
-          </p>
-        </div>
-      </section>
+    <main className="min-h-screen bg-background">
+      <HeroResources />
 
       {/* Resources Grid */}
       <section className="py-12 px-4 sm:px-6 lg:px-8">
@@ -347,6 +338,8 @@ export default function ResourcesPage() {
           </Button>
         </div>
       </section>
-    </div>
+
+      <Footer />
+    </main>
   )
 }

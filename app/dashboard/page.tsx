@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { HeroDashboard } from "@/components/HeroDashboard"
+import { Footer } from "@/components/Footer"
 
 const securityMetrics = [
   {
@@ -109,14 +111,10 @@ export default function DashboardPage() {
   const [selectedTab, setSelectedTab] = useState("overview")
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-foreground mb-2">Security Dashboard</h1>
-          <p className="text-muted-foreground">Monitor your organization's security posture in real-time</p>
-        </div>
+    <main className="min-h-screen bg-background">
+      <HeroDashboard />
 
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Metrics Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {securityMetrics.map((metric, index) => (
@@ -303,6 +301,8 @@ export default function DashboardPage() {
           </TabsContent>
         </Tabs>
       </div>
-    </div>
+
+      <Footer />
+    </main>
   )
 }

@@ -1,3 +1,5 @@
+"use client"
+
 import { Hero } from "@/components/Hero"
 import { ServicesGrid } from "@/components/ServicesGrid"
 import { InteractiveStats } from "@/components/InteractiveStats"

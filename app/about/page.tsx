@@ -1,6 +1,10 @@
+"use client"
+
 import { Shield, Users, Award, Target, Clock, Globe } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { HeroAbout } from "@/components/HeroAbout"
+import { Footer } from "@/components/Footer"
 
 const stats = [
   { label: "Years of Experience", value: "15+", icon: Clock },
@@ -72,25 +76,13 @@ const values = [
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-background">
-      {/* Hero Section */}
+    <main className="min-h-screen bg-background">
+      <HeroAbout />
+
+      {/* Stats */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
-              ስለ <span className="gradient-text">BETATECHHUB</span>
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              BETATECHHUB is a leading African technology company based in Addis Ababa, Ethiopia, dedicated to delivering reliable, innovative, and
-              secure IT solutions. With deep roots in Ethiopia's digital transformation journey, we combine local expertise with global cybersecurity standards.
-            </p>
-            <p className="text-lg text-muted-foreground mt-4 italic">
-              "Technology that understands Africa, built in Africa, for Africa"
-            </p>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {stats.map((stat, index) => (
               <Card key={index} className="bg-card border-border text-center">
                 <CardContent className="pt-6">
@@ -254,6 +246,8 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-    </div>
+
+      <Footer />
+    </main>
   )
 }

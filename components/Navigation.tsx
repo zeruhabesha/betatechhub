@@ -3,15 +3,18 @@
 import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Shield, Home, Settings, Users, Phone, BookOpen } from "lucide-react"
+import { Menu, X, Shield, Home, Settings, Users, Phone, BookOpen, Moon, Sun } from "lucide-react"
+import { useTheme } from "next-themes"
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
+  const { theme, setTheme } = useTheme()
 
   const navItems = [
     { href: "/", label: "Home", icon: Home },
     { href: "/services", label: "Services", icon: Shield },
     { href: "/about", label: "About", icon: Users },
+    { href: "/blog", label: "Blog", icon: BookOpen },
     { href: "/resources", label: "Resources", icon: BookOpen },
     { href: "/dashboard", label: "Dashboard", icon: Settings },
     { href: "/contact", label: "Contact", icon: Phone },
@@ -42,10 +45,30 @@ export function Navigation() {
             <Button className="bg-primary hover:bg-primary/90 text-primary-foreground text-sm lg:text-base px-4 lg:px-6">
               Get Started
             </Button>
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+              className="ml-2"
+            >
+              <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+              <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+              <span className="sr-only">Toggle theme</span>
+            </Button>
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+              className="mr-2 text-foreground"
+            >
+              <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+              <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+              <span className="sr-only">Toggle theme</span>
+            </Button>
             <Button variant="ghost" size="sm" onClick={() => setIsOpen(!isOpen)} className="text-foreground">
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
