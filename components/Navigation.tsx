@@ -1,4 +1,4 @@
-'use client';
+"use client"
 
 import { useState } from "react"
 import Link from "next/link"
@@ -25,7 +25,15 @@ export function Navigation() {
   const { theme, setTheme } = useTheme()
   const pathname = usePathname()
 
-  const toggleTheme = () => setTheme(theme === 'light' ? 'dark' : 'light');
+  const navItems = [
+    { href: "/", label: "Home", icon: Home },
+    { href: "/services", label: "Services", icon: Shield },
+    { href: "/about", label: "About", icon: Users },
+    { href: "/blog", label: "Blog", icon: BookOpen },
+    { href: "/resources", label: "Resources", icon: BookOpen },
+    { href: "/dashboard", label: "Dashboard", icon: Settings },
+    { href: "/contact", label: "Contact", icon: Phone },
+  ]
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50">
@@ -121,6 +129,7 @@ export function Navigation() {
           </div>
         </div>
 
+        {/* Mobile Navigation */}
         {isOpen && (
           <div className="md:hidden">
             <div className="mt-4 space-y-2 rounded-2xl border border-border/80 bg-background/95 p-4 shadow-xl shadow-primary/10 backdrop-blur-xl">
@@ -149,5 +158,5 @@ export function Navigation() {
         )}
       </div>
     </nav>
-  );
+  )
 }

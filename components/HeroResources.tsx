@@ -1,4 +1,4 @@
-'use client';
+"use client"
 
 import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
@@ -7,12 +7,11 @@ import { BookOpen, FileText, Video, Download } from "lucide-react"
 import { HeroBackdrop } from "@/components/HeroBackdrop"
 
 export function HeroResources() {
-  const [isClient, setIsClient] = useState(false);
-  const particles = useMemo(() => new Array(18).fill(0), []);
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    setIsClient(true);
-  }, []);
+    setMounted(true)
+  }, [])
 
   return (
     <section className="hero-surface">
@@ -26,7 +25,7 @@ export function HeroResources() {
 
       {mounted && (
         <>
-          {particles.map((_, index) => (
+          {[...Array(25)].map((_, i) => (
             <motion.div
               key={i}
               className={`absolute rounded-full ${
@@ -37,16 +36,22 @@ export function HeroResources() {
                     : "w-1 h-1 sm:w-1.5 sm:h-1.5 bg-primary/40"
               }`}
               initial={{
-                x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1200),
-                y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800),
+                x: Math.random() * (typeof window !== "undefined" ? window.innerWidth : 1200),
+                y: Math.random() * (typeof window !== "undefined" ? window.innerHeight : 800),
                 opacity: 0,
               }}
               animate={{
-                y: [null, -25, 25, -15],
-                x: [null, 10, -10, 15],
-                opacity: [0, 0.8, 0.4, 0.8, 0],
+                y: [null, -30, 30, -20, 10],
+                x: [null, 10, -10, 15, -5],
+                opacity: [0, 1, 0.7, 1, 0.3, 1, 0],
+                scale: [1, 1.2, 0.8, 1.1, 1],
               }}
-              transition={{ duration: 6 + Math.random() * 3, repeat: Number.POSITIVE_INFINITY, delay: Math.random() * 2 }}
+              transition={{
+                duration: 6 + Math.random() * 4,
+                repeat: Number.POSITIVE_INFINITY,
+                delay: Math.random() * 3,
+                ease: "easeInOut",
+              }}
             />
           ))}
 
@@ -77,10 +82,10 @@ export function HeroResources() {
 
       <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center text-center">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-background/70 px-4 py-2 text-xs uppercase tracking-[0.35em] text-primary backdrop-blur"
+          className="mb-6 sm:mb-8"
         >
           <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-background/70 px-3 py-1.5 text-xs uppercase tracking-[0.3em] text-primary backdrop-blur-sm sm:px-4 sm:py-2">
             <BookOpen className="w-3 h-3 sm:w-4 sm:h-4" />
@@ -89,7 +94,7 @@ export function HeroResources() {
         </motion.div>
 
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="px-2 text-3xl font-bold leading-tight text-foreground sm:px-0 sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
@@ -98,16 +103,16 @@ export function HeroResources() {
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           className="mx-auto mt-4 max-w-2xl px-2 text-base leading-relaxed text-muted-foreground sm:px-0 sm:text-lg lg:text-xl"
         >
-          Access practical resources to build resilient teams, secure infrastructure, and accelerate digital growth across the continent.
+          Access comprehensive guides, whitepapers, tutorials, and tools to enhance your cybersecurity knowledge and protect your business effectively.
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
           className="mt-6 flex flex-col items-center justify-center gap-3 px-2 text-muted-foreground sm:flex-row sm:gap-5 sm:px-0"
@@ -149,5 +154,5 @@ export function HeroResources() {
         </motion.div>
       </div>
     </section>
-  );
+  )
 }

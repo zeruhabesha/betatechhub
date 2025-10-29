@@ -1,4 +1,4 @@
-'use client';
+"use client"
 
 import Link from "next/link"
 import { motion } from "framer-motion"
@@ -18,6 +18,10 @@ export function Footer() {
         <div className="absolute inset-0 bg-gradient-to-t from-muted/50 via-transparent to-transparent dark:from-muted/20" />
       </div>
 
+    <footer className="relative overflow-hidden border-t border-border/40 bg-gradient-to-br from-[#040a16] via-[#0b162d] to-[#060910]">
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,rgba(23,106,157,0.35),transparent_65%)]" />
+      </div>
       <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

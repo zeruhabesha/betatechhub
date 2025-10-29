@@ -1,26 +1,17 @@
-'use client';
+"use client"
 
-import { useEffect, useMemo, useState } from 'react';
-import { motion } from 'framer-motion';
-import { Cloud, Cpu, Database, Network, Shield, Zap } from 'lucide-react';
-
-import { HeroBackdrop } from '@/components/HeroBackdrop';
-
-const focusAreas = [
-  { icon: Shield, label: 'Managed Defense', description: 'Security operations tailored for African enterprises' },
-  { icon: Cloud, label: 'Cloud Security', description: 'Protect workloads across hybrid and multi-cloud estates' },
-  { icon: Database, label: 'Data Privacy', description: 'Safeguard critical records with resilient controls' },
-];
+import { motion } from "framer-motion"
+import { useState, useEffect } from "react"
+import { Shield, Zap, Cloud, Cpu, Network, Database } from "lucide-react"
 
 import { HeroBackdrop } from "@/components/HeroBackdrop"
 
 export function HeroServices() {
-  const [isClient, setIsClient] = useState(false);
-  const particles = useMemo(() => new Array(24).fill(0), []);
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    setIsClient(true);
-  }, []);
+    setMounted(true)
+  }, [])
 
   return (
     <section className="hero-surface">
@@ -34,7 +25,7 @@ export function HeroServices() {
 
       {mounted && (
         <>
-          {particles.map((_, index) => (
+          {[...Array(25)].map((_, i) => (
             <motion.div
               key={i}
               className={`absolute rounded-full ${
@@ -45,8 +36,8 @@ export function HeroServices() {
                     : "w-1 h-1 sm:w-1.5 sm:h-1.5 bg-primary/40"
               }`}
               initial={{
-                x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1200),
-                y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800),
+                x: Math.random() * (typeof window !== "undefined" ? window.innerWidth : 1200),
+                y: Math.random() * (typeof window !== "undefined" ? window.innerHeight : 800),
                 opacity: 0,
               }}
               animate={{
@@ -59,18 +50,18 @@ export function HeroServices() {
                 duration: 6 + Math.random() * 4,
                 repeat: Number.POSITIVE_INFINITY,
                 delay: Math.random() * 3,
-                ease: 'easeInOut',
+                ease: "easeInOut",
               }}
             />
           ))}
 
-          {[Shield, Cloud, Cpu, Network, Database, Zap].map((Icon, index) => (
+          {[Shield, Cloud, Cpu, Network, Database, Zap].map((Icon, i) => (
             <motion.div
               key={`icon-${i}`}
               className="absolute opacity-20"
               initial={{
-                x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1200),
-                y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800),
+                x: Math.random() * (typeof window !== "undefined" ? window.innerWidth : 1200),
+                y: Math.random() * (typeof window !== "undefined" ? window.innerHeight : 800),
               }}
               animate={{
                 y: [null, -20, 20, -15],
@@ -78,9 +69,9 @@ export function HeroServices() {
                 scale: [1, 1.1, 0.9, 1],
               }}
               transition={{
-                duration: 8 + index * 2,
+                duration: 8 + i * 2,
                 repeat: Number.POSITIVE_INFINITY,
-                delay: index * 1.5,
+                delay: i * 1.5,
               }}
             >
               <Icon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-primary/45" />
@@ -117,8 +108,7 @@ export function HeroServices() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="mx-auto mt-4 max-w-2xl px-2 text-base leading-relaxed text-muted-foreground sm:px-0 sm:text-lg lg:text-xl"
         >
-          Comprehensive cybersecurity solutions tailored for African businesses. From threat detection to cloud security, we
-          protect your digital assets with cutting-edge technology.
+          Comprehensive cybersecurity solutions tailored for African businesses. From threat detection to cloud security, we protect your digital assets with cutting-edge technology.
         </motion.p>
 
         <motion.div
@@ -164,5 +154,5 @@ export function HeroServices() {
         </motion.div>
       </div>
     </section>
-  );
+  )
 }
