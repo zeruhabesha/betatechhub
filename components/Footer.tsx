@@ -1,33 +1,62 @@
 "use client"
 
 import Link from "next/link"
-import { Shield, Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram } from "lucide-react"
+import { motion } from "framer-motion"
+import { Shield, Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram, ArrowRight } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer className="bg-card border-t border-border">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <footer className="relative overflow-hidden border-t border-border/40 bg-gradient-to-br from-[#040a16] via-[#0b162d] to-[#060910]">
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,rgba(23,106,157,0.35),transparent_65%)]" />
+      </div>
+      <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+          className="mb-16 flex flex-col gap-4 rounded-3xl border border-[#176a9d]/30 bg-[#0b162d]/80 p-8 text-white shadow-lg shadow-primary/10 backdrop-blur sm:flex-row sm:items-center sm:justify-between"
+        >
+          <div>
+            <p className="text-xs uppercase tracking-[0.35em] text-[#82c4e6]">Stay ahead of the threat curve</p>
+            <h3 className="mt-3 text-2xl font-semibold">Join the BETATECHHUB intelligence briefing</h3>
+            <p className="mt-2 max-w-xl text-sm text-[#b6c7dd]">
+              Receive curated threat intel, local regulatory updates, and actionable guidance for teams operating across Africa.
+            </p>
+          </div>
+          <Link
+            href="/contact"
+            className="group inline-flex items-center gap-3 rounded-full border border-[#176a9d]/40 bg-[#176a9d]/20 px-5 py-3 text-sm font-semibold text-[#9bd4f2] transition duration-300 hover:border-[#176a9d]/60 hover:bg-[#176a9d]/30"
+          >
+            Speak with an expert
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Link>
+        </motion.div>
+
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
           {/* Company Info */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <Shield className="h-8 w-8 text-primary" />
-              <span className="text-xl font-bold text-foreground">BETA TECH HUB</span>
+            <div className="flex items-center space-x-3">
+              <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-[#176a9d]/40 bg-[#176a9d]/20 text-[#9bd4f2]">
+                <Shield className="h-6 w-6" />
+              </span>
+              <span className="text-xl font-semibold text-white">BETA TECH HUB</span>
             </div>
-            <p className="text-muted-foreground text-sm">
+            <p className="text-sm text-[#9fb7d5]">
               Empowering African businesses with cutting-edge cybersecurity solutions and innovative technology services.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="#" className="text-[#8aa8c7] transition-colors hover:text-primary">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="#" className="text-[#8aa8c7] transition-colors hover:text-primary">
                 <Twitter className="h-5 w-5" />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="#" className="text-[#8aa8c7] transition-colors hover:text-primary">
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="#" className="text-[#8aa8c7] transition-colors hover:text-primary">
                 <Instagram className="h-5 w-5" />
               </a>
             </div>
@@ -35,30 +64,30 @@ export function Footer() {
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-foreground">Quick Links</h3>
+            <h3 className="text-lg font-semibold text-white">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/" className="text-[#8aa8c7] transition-colors hover:text-primary">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/services" className="text-[#8aa8c7] transition-colors hover:text-primary">
                   Services
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/about" className="text-[#8aa8c7] transition-colors hover:text-primary">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/resources" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/resources" className="text-[#8aa8c7] transition-colors hover:text-primary">
                   Resources
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/contact" className="text-[#8aa8c7] transition-colors hover:text-primary">
                   Contact
                 </Link>
               </li>
@@ -67,30 +96,30 @@ export function Footer() {
 
           {/* Services */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-foreground">Services</h3>
+            <h3 className="text-lg font-semibold text-white">Services</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/services#cybersecurity" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/services#cybersecurity" className="text-[#8aa8c7] transition-colors hover:text-primary">
                   Cybersecurity Solutions
                 </Link>
               </li>
               <li>
-                <Link href="/services#ai-ml" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/services#ai-ml" className="text-[#8aa8c7] transition-colors hover:text-primary">
                   AI & Machine Learning
                 </Link>
               </li>
               <li>
-                <Link href="/services#cloud" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/services#cloud" className="text-[#8aa8c7] transition-colors hover:text-primary">
                   Cloud Computing
                 </Link>
               </li>
               <li>
-                <Link href="/services#it-infrastructure" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/services#it-infrastructure" className="text-[#8aa8c7] transition-colors hover:text-primary">
                   IT Infrastructure
                 </Link>
               </li>
               <li>
-                <Link href="/services#software" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/services#software" className="text-[#8aa8c7] transition-colors hover:text-primary">
                   Software Development
                 </Link>
               </li>
@@ -99,38 +128,44 @@ export function Footer() {
 
           {/* Contact Info */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-foreground">Contact Info</h3>
+            <h3 className="text-lg font-semibold text-white">Contact Info</h3>
             <div className="space-y-3">
-              <div className="flex items-center space-x-3">
-                <Phone className="h-4 w-4 text-primary" />
-                <span className="text-muted-foreground text-sm">+251 911 123 456</span>
+              <div className="flex items-center space-x-3 text-[#8aa8c7]">
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#176a9d]/30 bg-[#176a9d]/15 text-primary">
+                  <Phone className="h-4 w-4" />
+                </span>
+                <span className="text-sm">+251 911 123 456</span>
               </div>
-              <div className="flex items-center space-x-3">
-                <Mail className="h-4 w-4 text-primary" />
-                <span className="text-muted-foreground text-sm">info@betatechhub.et</span>
+              <div className="flex items-center space-x-3 text-[#8aa8c7]">
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#176a9d]/30 bg-[#176a9d]/15 text-primary">
+                  <Mail className="h-4 w-4" />
+                </span>
+                <span className="text-sm">info@betatechhub.et</span>
               </div>
-              <div className="flex items-center space-x-3">
-                <MapPin className="h-4 w-4 text-primary" />
-                <span className="text-muted-foreground text-sm">ICT Park, Addis Ababa, Ethiopia</span>
+              <div className="flex items-start space-x-3 text-[#8aa8c7]">
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#176a9d]/30 bg-[#176a9d]/15 text-primary">
+                  <MapPin className="h-4 w-4" />
+                </span>
+                <span className="text-sm leading-relaxed">ICT Park, Addis Ababa, Ethiopia</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-8 pt-8 border-t border-border">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-muted-foreground text-sm">
+        <div className="mt-14 border-t border-border/30 pt-6">
+          <div className="flex flex-col items-center justify-between gap-4 text-center text-sm text-[#6f8bad] md:flex-row md:text-left">
+            <p>
               © 2024 BETA TECH HUB. All rights reserved. Proudly Ethiopian.
             </p>
-            <div className="flex space-x-6">
-              <Link href="/privacy" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+            <div className="flex flex-wrap items-center justify-center gap-4 md:justify-end">
+              <Link href="/privacy" className="transition-colors hover:text-primary">
                 Privacy Policy
               </Link>
-              <Link href="/terms" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+              <Link href="/terms" className="transition-colors hover:text-primary">
                 Terms of Service
               </Link>
-              <Link href="/cookies" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+              <Link href="/cookies" className="transition-colors hover:text-primary">
                 Cookie Policy
               </Link>
             </div>
