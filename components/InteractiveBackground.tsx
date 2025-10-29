@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import { motion } from "framer-motion"
 import { Shield, Lock, Eye, Zap, Server, Database } from "lucide-react"

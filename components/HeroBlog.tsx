@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
@@ -10,11 +10,12 @@ import { Input } from "@/components/ui/input"
 import { HeroBackdrop } from "@/components/HeroBackdrop"
 
 export function HeroBlog() {
-  const [mounted, setMounted] = useState(false)
+  const [isClient, setIsClient] = useState(false);
+  const particles = useMemo(() => new Array(20).fill(0), []);
 
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    setIsClient(true);
+  }, []);
 
   return (
     <section className="hero-surface">
@@ -28,7 +29,7 @@ export function HeroBlog() {
 
       {mounted && (
         <>
-          {[...Array(25)].map((_, i) => (
+          {particles.map((_, index) => (
             <motion.div
               key={i}
               className={`absolute rounded-full ${
@@ -39,22 +40,16 @@ export function HeroBlog() {
                     : "w-1 h-1 sm:w-1.5 sm:h-1.5 bg-primary/40"
               }`}
               initial={{
-                x: Math.random() * (typeof window !== "undefined" ? window.innerWidth : 1200),
-                y: Math.random() * (typeof window !== "undefined" ? window.innerHeight : 800),
+                x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1200),
+                y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800),
                 opacity: 0,
               }}
               animate={{
-                y: [null, -30, 30, -20, 10],
-                x: [null, 10, -10, 15, -5],
-                opacity: [0, 1, 0.7, 1, 0.3, 1, 0],
-                scale: [1, 1.2, 0.8, 1.1, 1],
+                y: [null, -25, 25, -15],
+                x: [null, 15, -15, 10],
+                opacity: [0, 0.8, 0.4, 0.8, 0],
               }}
-              transition={{
-                duration: 6 + Math.random() * 4,
-                repeat: Number.POSITIVE_INFINITY,
-                delay: Math.random() * 3,
-                ease: "easeInOut",
-              }}
+              transition={{ duration: 6 + Math.random() * 3, repeat: Number.POSITIVE_INFINITY, delay: Math.random() * 2 }}
             />
           ))}
 
@@ -85,10 +80,10 @@ export function HeroBlog() {
 
       <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center text-center">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="mb-6 sm:mb-8"
+          className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-background/70 px-4 py-2 text-xs uppercase tracking-[0.35em] text-primary backdrop-blur"
         >
           <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-background/70 px-3 py-1.5 text-xs uppercase tracking-[0.3em] text-primary backdrop-blur-sm sm:px-4 sm:py-2">
             <BookOpen className="w-3 h-3 sm:w-4 sm:h-4" />
@@ -97,7 +92,7 @@ export function HeroBlog() {
         </motion.div>
 
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="px-2 text-3xl font-bold leading-tight text-foreground sm:px-0 sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
@@ -106,12 +101,13 @@ export function HeroBlog() {
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           className="mx-auto mt-4 max-w-2xl px-2 text-base leading-relaxed text-muted-foreground sm:px-0 sm:text-lg lg:text-xl"
         >
-          Stay ahead of cyber threats with expert insights, industry trends, and practical security guidance tailored for African businesses and Ethiopian organizations.
+          Explore research, playbooks, and commentary from BETATECHHUB&apos;s specialists. Each article translates global trends
+          into practical steps for African teams.
         </motion.p>
 
         <motion.div
@@ -131,7 +127,7 @@ export function HeroBlog() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.7 }}
           className="mt-6 flex flex-wrap items-center justify-center gap-2 px-2 sm:px-0"
@@ -189,5 +185,5 @@ export function HeroBlog() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

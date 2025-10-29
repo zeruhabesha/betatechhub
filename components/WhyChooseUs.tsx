@@ -5,33 +5,33 @@ import { motion } from "framer-motion"
 const reasons = [
   {
     icon: Shield,
-    title: "Local Cybersecurity Expertise",
-    amharicTitle: "የአካባቢ የሳይበር ደህንነት ብቃት",
+    title: 'Local Cybersecurity Expertise',
+    amharicTitle: 'የአካባቢ የሳይበር ደህንነት ብቃት',
     description:
       "Our Ethiopian-based experts understand local cyber threats and regulations, providing security solutions tailored to Ethiopia's digital landscape and business environment.",
   },
   {
     icon: Users,
-    title: "Africa-Focused Services",
-    amharicTitle: "በአፍሪካ ያተኮረ አገልግሎቶች",
+    title: 'Africa-Focused Services',
+    amharicTitle: 'በአፍሪካ ያተኮረ አገልግሎቶች',
     description:
-      "From Addis Ababa to across Africa, we deliver IT solutions that address the unique challenges and opportunities of the African market, with local support and understanding.",
+      'From Addis Ababa to across Africa, we deliver IT solutions that address the unique challenges and opportunities of the African market, with local support and understanding.',
   },
   {
     icon: Award,
-    title: "Culturally Tailored",
-    amharicTitle: "በባህል የተጠናቀቁ መፍትሄዎች",
+    title: 'Culturally Tailored',
+    amharicTitle: 'በባህል የተጠናቀቁ መፍትሄዎች',
     description:
       "We customize solutions with cultural intelligence, ensuring our technology aligns with Ethiopian business practices, communication styles, and work ethics.",
   },
   {
     icon: Target,
-    title: "Proven in Ethiopia",
-    amharicTitle: "በኢትዮጵያ ውስጥ የተሞከረ እና የተረጋገጠ",
+    title: 'Proven in Ethiopia',
+    amharicTitle: 'በኢትዮጵያ ውስጥ የተሞከረ እና የተረጋገጠ',
     description:
       "Trusted by leading Ethiopian businesses and organizations for reliable, locally-tested solutions that work in Ethiopia's unique technological landscape.",
   },
-]
+];
 
 export function WhyChooseUs() {
   return (
@@ -109,5 +109,5 @@ export function WhyChooseUs() {
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import { useEffect, useState } from "react"
 import { motion, useMotionValue, useSpring } from "framer-motion"
@@ -11,11 +11,10 @@ export function Hero() {
   const [isHovered, setIsHovered] = useState(false)
   const [particleCount, setParticleCount] = useState(28)
 
-  const mouseX = useMotionValue(0)
-  const mouseY = useMotionValue(0)
+  const springX = useSpring(mouseX, { stiffness: 100, damping: 10 });
+  const springY = useSpring(mouseY, { stiffness: 100, damping: 10 });
 
-  const springX = useSpring(mouseX, { stiffness: 100, damping: 10 })
-  const springY = useSpring(mouseY, { stiffness: 100, damping: 10 })
+  const animatedParticles = useMemo(() => new Array(particleCount).fill(0), [particleCount]);
 
   const floatingHighlights = [
     {
@@ -113,14 +112,15 @@ export function Hero() {
         style={{
           x: springX,
           y: springY,
-          translateX: "-50%",
-          translateY: "-50%",
+          translateX: '-50%',
+          translateY: '-50%',
         }}
       />
 
       {[...Array(particleCount)].map((_, i) => (
         <motion.div
-          key={i}
+          // eslint-disable-next-line react/no-array-index-key
+          key={index}
           className={`absolute rounded-full ${
             i % 3 === 0
               ? "h-1.5 w-1.5 bg-primary sm:h-2 sm:w-2"
@@ -133,8 +133,8 @@ export function Hero() {
                 : "h-1 w-1 bg-[#176a9d]/70 sm:h-1.5 sm:w-1.5"
           }`}
           initial={{
-            x: Math.random() * (typeof window !== "undefined" ? window.innerWidth : 1200),
-            y: Math.random() * (typeof window !== "undefined" ? window.innerHeight : 800),
+            x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1200),
+            y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800),
             opacity: 0,
           }}
           animate={{
@@ -147,18 +147,18 @@ export function Hero() {
             duration: 6 + Math.random() * 4,
             repeat: Number.POSITIVE_INFINITY,
             delay: Math.random() * 3,
-            ease: "easeInOut",
+            ease: 'easeInOut',
           }}
         />
       ))}
 
-      {[Shield, Eye, Zap].map((Icon, i) => (
+      {[Shield, Eye, Zap].map((Icon, index) => (
         <motion.div
           key={`icon-${i}`}
           className="absolute opacity-20"
           initial={{
-            x: Math.random() * (typeof window !== "undefined" ? window.innerWidth : 1200),
-            y: Math.random() * (typeof window !== "undefined" ? window.innerHeight : 800),
+            x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1200),
+            y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800),
           }}
           animate={{
             y: [null, -20, 20, -15],
@@ -166,9 +166,9 @@ export function Hero() {
             scale: [1, 1.1, 0.9, 1],
           }}
           transition={{
-            duration: 8 + i * 2,
+            duration: 8 + index * 2,
             repeat: Number.POSITIVE_INFINITY,
-            delay: i * 1.5,
+            delay: index * 1.5,
           }}
         >
           <Icon className="h-6 w-6 text-primary/45 sm:h-7 sm:w-7 lg:h-8 lg:w-8" />
@@ -226,7 +226,9 @@ export function Hero() {
           className="mx-auto max-w-3xl px-2 text-base leading-relaxed text-muted-foreground sm:px-0 sm:text-lg lg:text-xl"
           className="mx-auto max-w-3xl px-2 text-base leading-relaxed text-gray-300 sm:px-0 sm:text-lg lg:text-xl"
         >
-          Based in the heart of Addis Ababa, BETATECHHUB empowers African businesses with cutting-edge, locally-relevant technology solutions. We blend global cybersecurity expertise with deep understanding of Africa's unique digital landscape to keep your business secure, connected, and competitive.
+          Based in the heart of Addis Ababa, BETATECHHUB empowers African businesses with cutting-edge, locally-relevant
+          technology solutions. We blend global cybersecurity expertise with deep understanding of Africa&apos;s unique digital
+          landscape to keep your business secure, connected, and competitive.
         </motion.p>
 
         <motion.div
@@ -369,5 +371,5 @@ export function Hero() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

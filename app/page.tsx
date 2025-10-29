@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import Link from "next/link"
 import HeroWrapper from "@/components/HeroWrapper"
@@ -24,28 +24,22 @@ export default function HomePage() {
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-muted/40 to-transparent dark:via-muted/10" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(23,106,157,0.12),transparent_55%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_10%,rgba(35,45,95,0.18),transparent_60%)]" />
       </div>
       {/* Hero (client-only, heavy animations removed from SSR) */}
       <HeroWrapper />
 
       {/* Quick stats strip - keeps momentum after hero */}
-      <section className="relative z-20 -mt-24 sm:-mt-28">
+      <section className="relative z-20 -mt-20 sm:-mt-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="rounded-3xl border border-border/60 bg-card/85 p-6 shadow-2xl shadow-primary/10 backdrop-blur">
-      <section className="relative z-10 -mt-16 pb-10">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-3xl border border-border/60 bg-card/80 p-6 shadow-2xl shadow-primary/10 backdrop-blur">
             <InteractiveStats />
           </div>
         </div>
       </section>
 
       {/* Services - card grid inside container */}
-      <section className="relative z-10 py-20">
+      <section className="relative z-10 py-16">
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-primary/10 to-transparent dark:via-primary/20" />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-12 flex flex-col gap-6 rounded-3xl border border-border/50 bg-card/70 p-8 backdrop-blur md:flex-row md:items-center md:justify-between">
             <div>
@@ -69,7 +63,7 @@ export default function HomePage() {
       </section>
 
       {/* Why choose us + Threat Map - two-column responsive stack */}
-      <section className="relative z-10 py-20">
+      <section className="relative z-10 py-16">
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
           <div>
             <WhyChooseUs />
@@ -86,9 +80,8 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials */}
-      <section className="relative z-10 py-20">
+      <section className="relative z-10 py-16">
         <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/10 via-transparent to-primary/15 dark:from-primary/20 dark:to-primary/25" />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/5 via-transparent to-primary/10" />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-8 flex flex-col gap-2">
             <span className="text-xs uppercase tracking-[0.3em] text-primary">Testimonials</span>
@@ -99,7 +92,7 @@ export default function HomePage() {
       </section>
 
       {/* Insights grid + newsletter grouped to reduce visual noise */}
-      <section className="relative z-10 py-20">
+      <section className="relative z-10 py-16">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-4 sm:px-6 lg:grid-cols-3 lg:px-8">
           <div className="lg:col-span-2">
             <div className="mb-6 flex flex-col gap-2">
@@ -124,7 +117,7 @@ export default function HomePage() {
       </section>
 
       {/* Small CTA band */}
-      <section className="relative z-10 py-16">
+      <section className="relative z-10 py-14">
         <div className="mx-auto max-w-6xl overflow-hidden rounded-3xl border border-primary/40 bg-gradient-to-r from-primary via-primary/70 to-accent px-6 py-10 text-white shadow-2xl shadow-primary/25 sm:px-10">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
             <div className="space-y-2">
