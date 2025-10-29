@@ -181,9 +181,8 @@ function ChartTooltipContent({
       <div className="grid gap-1.5">
         {payload.map((item, index) => {
           const key = `${nameKey || item.name || item.dataKey || "value"}`
-            const itemConfig = getPayloadConfigFromPayload(config, item, key)
-            const indicatorColor = color || item.payload.fill || item.color
-            const IconComponent = itemConfig?.icon
+          const itemConfig = getPayloadConfigFromPayload(config, item, key)
+          const indicatorColor = color || item.payload.fill || item.color
 
           return (
             <div
@@ -197,8 +196,8 @@ function ChartTooltipContent({
                 formatter(item.value, item.name, item, index, item.payload)
               ) : (
                 <>
-                  {IconComponent ? (
-                    <IconComponent />
+                  {itemConfig?.icon ? (
+                    <itemConfig.icon />
                   ) : (
                     !hideIndicator && (
                       <div
@@ -279,7 +278,6 @@ function ChartLegendContent({
       {payload.map((item) => {
         const key = `${nameKey || item.dataKey || "value"}`
         const itemConfig = getPayloadConfigFromPayload(config, item, key)
-        const IconComponent = itemConfig?.icon
 
         return (
           <div
@@ -288,8 +286,8 @@ function ChartLegendContent({
               "[&>svg]:text-muted-foreground flex items-center gap-1.5 [&>svg]:h-3 [&>svg]:w-3"
             )}
           >
-            {IconComponent && !hideIcon ? (
-              <IconComponent />
+            {itemConfig?.icon && !hideIcon ? (
+              <itemConfig.icon />
             ) : (
               <div
                 className="h-2 w-2 shrink-0 rounded-[2px]"

@@ -1,4 +1,4 @@
-'use client';
+"use client"
 
 import React from 'react'
 import { BookOpen, Download, ExternalLink, Shield, Lock, Eye } from "lucide-react"

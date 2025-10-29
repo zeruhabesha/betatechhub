@@ -1,4 +1,4 @@
-'use client';
+"use client"
 
 import { useState } from "react"
 import { Shield, AlertTriangle, Eye, Activity, Download } from "lucide-react"

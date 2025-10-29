@@ -1,78 +1,76 @@
-'use client';
+"use client"
 
-import { useEffect, useRef, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { Shield, Users, Clock, Award } from 'lucide-react';
+import { useState, useEffect } from "react"
+import { motion, useInView } from "framer-motion"
+import { useRef } from "react"
+import { Shield, Users, Clock, Award } from "lucide-react"
 
 const stats = [
   {
     icon: Shield,
     value: 99.9,
-    suffix: '%',
-    label: 'Threat Detection Rate',
-    amharicLabel: 'የአደጋ የመለየት መጠን',
-    description: 'Advanced AI-powered security for Ethiopian networks',
+    suffix: "%",
+    label: "Threat Detection Rate",
+    amharicLabel: "የአደጋ የመለየት መጠን",
+    description: "Advanced AI-powered security for Ethiopian networks",
     localContext: "Optimized for Ethiopia's digital infrastructure",
   },
   {
     icon: Users,
     value: 250,
-    suffix: '+',
-    label: 'Ethiopian Clients',
-    amharicLabel: 'ኢትዮጵያዊ ደንበኞች',
-    description: 'Serving businesses across Ethiopia',
-    localContext: 'From startups to enterprise in Addis and beyond',
+    suffix: "+",
+    label: "Ethiopian Clients",
+    amharicLabel: "ኢትዮጵያዊ ደንበኞች",
+    description: "Serving businesses across Ethiopia",
+    localContext: "From startups to enterprise in Addis and beyond",
   },
   {
     icon: Clock,
     value: 24,
-    suffix: '/7',
-    label: 'Monitoring',
-    amharicLabel: 'በየቀኑ ቁጥጥር',
-    description: 'Local support in Addis Ababa timezone',
-    localContext: '24/7 security operations center in Addis',
+    suffix: "/7",
+    label: "Monitoring",
+    amharicLabel: "በየቀኑ ቁጥጥር",
+    description: "Local support in Addis Ababa timezone",
+    localContext: "24/7 security operations center in Addis",
   },
   {
     icon: Award,
     value: 7,
-    suffix: '+',
-    label: 'Local Certifications',
-    amharicLabel: 'የአካባቢ ምስክር ወረቀቶች',
-    description: 'Recognized by Ethiopian authorities',
-    localContext: 'Compliant with Ethiopian Cyber Law',
+    suffix: "+",
+    label: "Local Certifications",
+    amharicLabel: "የአካባቢ ምስክር ወረቀቶች",
+    description: "Recognized by Ethiopian authorities",
+    localContext: "Compliant with Ethiopian Cyber Law",
   },
-];
+]
 
 function AnimatedCounter({ value, duration = 2 }: { value: number; duration?: number }) {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLSpanElement | null>(null);
-  const isInView = useInView(ref, { amount: 0.5, once: true });
+  const [count, setCount] = useState(0)
+  const ref = useRef(null)
+  const isInView = useInView(ref)
 
   useEffect(() => {
-    if (!isInView) return;
+    if (isInView) {
+      let startTime: number
+      const animate = (currentTime: number) => {
+        if (!startTime) startTime = currentTime
+        const progress = Math.min((currentTime - startTime) / (duration * 1000), 1)
 
-    let startTime: number | undefined;
+        setCount(Math.floor(progress * value))
 
-    const animate = (currentTime: number) => {
-      if (!startTime) startTime = currentTime;
-      const progress = Math.min((currentTime - startTime) / (duration * 1000), 1);
-      setCount(Math.floor(progress * value));
-
-      if (progress < 1) {
-        requestAnimationFrame(animate);
+        if (progress < 1) {
+          requestAnimationFrame(animate)
+        }
       }
-    };
+      requestAnimationFrame(animate)
+    }
+  }, [isInView, value, duration])
 
-    const frame = requestAnimationFrame(animate);
-
-    return () => cancelAnimationFrame(frame);
-  }, [duration, isInView, value]);
-
-  return <span ref={ref}>{count}</span>;
+  return <span ref={ref}>{count}</span>
 }
 
 export function InteractiveStats() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
   return (
     <div className="relative overflow-hidden rounded-2xl border border-border/60 bg-card/90 p-8 text-foreground shadow-lg shadow-primary/10">
