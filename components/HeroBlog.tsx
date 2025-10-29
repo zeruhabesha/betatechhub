@@ -3,9 +3,11 @@
 import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
 import { BookOpen, Search, Filter, Calendar, User, Clock } from "lucide-react"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
+
 import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { HeroBackdrop } from "@/components/HeroBackdrop"
 
 export function HeroBlog() {
   const [mounted, setMounted] = useState(false)
@@ -15,47 +17,27 @@ export function HeroBlog() {
   }, [])
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0B132B] via-[#1C2541] to-[#0B132B] px-4 sm:px-6 lg:px-8">
-      <div className="absolute inset-0">
-        {/* Primary grid pattern */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(23,106,157,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(23,106,157,0.1)_1px,transparent_1px)] bg-[size:30px_30px] sm:bg-[size:40px_40px] lg:bg-[size:50px_50px] animate-pulse" />
+    <section className="hero-surface">
+      <HeroBackdrop imageSrc="https://images.unsplash.com/photo-1486312338219-ce68e2c6b827?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80">
+        <div className="absolute inset-0">
+          <div className="absolute left-10 top-16 h-24 w-24 rounded-3xl border border-border/40 bg-card/40 backdrop-blur-sm sm:h-32 sm:w-32" />
+          <div className="absolute right-10 top-1/3 h-16 w-32 -rotate-6 rounded-3xl border border-border/40 bg-background/60 backdrop-blur" />
+          <div className="absolute bottom-16 right-12 h-24 w-24 rounded-full border border-primary/30 bg-primary/15 blur-sm" />
         </div>
+      </HeroBackdrop>
 
-        {/* Secondary diagonal pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(23,106,157,0.05)_1px,transparent_1px),linear-gradient(-45deg,rgba(23,106,157,0.05)_1px,transparent_1px)] bg-[size:20px_20px] sm:bg-[size:25px_25px] lg:bg-[size:30px_30px]" />
-        </div>
-
-        {/* Animated circuit pattern */}
-        <div className="absolute inset-0 opacity-15">
-          <div className="absolute top-5 left-5 sm:top-10 sm:left-10 w-16 h-16 sm:w-24 sm:h-24 lg:w-32 lg:h-32 border border-[#176a9d]/20 rounded-lg animate-pulse" />
-          <div
-            className="absolute top-10 right-5 sm:top-20 sm:right-20 w-12 h-12 sm:w-16 sm:h-16 lg:w-24 lg:h-24 border border-[#176a9d]/30 rounded-full animate-bounce"
-            style={{ animationDuration: "3s" }}
-          />
-          <div
-            className="absolute bottom-10 left-5 sm:bottom-20 sm:left-20 w-20 h-10 sm:w-32 sm:h-16 lg:w-40 lg:h-20 border border-[#176a9d]/25 rounded-lg animate-pulse"
-            style={{ animationDelay: "1s" }}
-          />
-          <div
-            className="absolute bottom-16 right-5 sm:bottom-32 sm:right-32 w-8 h-8 sm:w-12 sm:h-12 lg:w-16 lg:h-16 border border-[#176a9d]/20 rounded-full animate-bounce"
-            style={{ animationDuration: "4s", animationDelay: "2s" }}
-          />
-        </div>
-      </div>
-
-      <div className="absolute inset-0 opacity-5">
-        <img src="https://images.unsplash.com/photo-1486312338219-ce68e2c6b827?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="" className="w-full h-full object-cover mix-blend-screen" />
-      </div>
-
-      {/* Floating animated elements - only render on client */}
       {mounted && (
         <>
           {[...Array(25)].map((_, i) => (
             <motion.div
               key={i}
-              className={`absolute rounded-full ${i % 3 === 0 ? "w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#176a9d]" : i % 3 === 1 ? "w-1 h-1 bg-[#2980b9]" : "w-1 h-1 sm:w-1.5 sm:h-1.5 bg-[#176a9d]/70"}`}
+              className={`absolute rounded-full ${
+                i % 3 === 0
+                  ? "w-1.5 h-1.5 sm:w-2 sm:h-2 bg-primary"
+                  : i % 3 === 1
+                    ? "w-1 h-1 bg-primary/70"
+                    : "w-1 h-1 sm:w-1.5 sm:h-1.5 bg-primary/40"
+              }`}
               initial={{
                 x: Math.random() * (typeof window !== "undefined" ? window.innerWidth : 1200),
                 y: Math.random() * (typeof window !== "undefined" ? window.innerHeight : 800),
@@ -79,7 +61,7 @@ export function HeroBlog() {
           {[BookOpen, Search, Filter, Calendar].map((Icon, i) => (
             <motion.div
               key={`icon-${i}`}
-              className="absolute opacity-10"
+              className="absolute opacity-20"
               initial={{
                 x: Math.random() * (typeof window !== "undefined" ? window.innerWidth : 1200),
                 y: Math.random() * (typeof window !== "undefined" ? window.innerHeight : 800),
@@ -95,24 +77,22 @@ export function HeroBlog() {
                 delay: i * 1.5,
               }}
             >
-              <Icon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-[#176a9d]" />
+              <Icon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-primary/45" />
             </motion.div>
           ))}
         </>
       )}
 
-      <div className="relative z-10 text-center max-w-xs sm:max-w-2xl lg:max-w-4xl mx-auto">
+      <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="mb-6 sm:mb-8"
         >
-          <div className="inline-flex items-center gap-2 bg-[#1C2541]/50 backdrop-blur-sm border border-[#176a9d]/30 rounded-full px-3 py-1.5 sm:px-4 sm:py-2 mb-4 sm:mb-6">
-            <BookOpen className="w-3 h-3 sm:w-4 sm:h-4 text-[#176a9d]" />
-            <span className="text-xs sm:text-sm text-gray-300">
-              Cybersecurity Insights
-            </span>
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-background/70 px-3 py-1.5 text-xs uppercase tracking-[0.3em] text-primary backdrop-blur-sm sm:px-4 sm:py-2">
+            <BookOpen className="w-3 h-3 sm:w-4 sm:h-4" />
+            <span>Cybersecurity Insights</span>
           </div>
         </motion.div>
 
@@ -120,33 +100,32 @@ export function HeroBlog() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight px-2 sm:px-0"
+          className="px-2 text-3xl font-bold leading-tight text-foreground sm:px-0 sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
         >
-          <span className="bg-gradient-to-r from-[#176a9d] to-[#2980b9] bg-clip-text text-transparent">Blog</span> & Insights
+          <span className="bg-gradient-to-r from-primary via-primary/80 to-accent bg-clip-text text-transparent">Blog</span> & Insights
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-base sm:text-lg lg:text-xl text-gray-300 mb-6 sm:mb-8 max-w-sm sm:max-w-xl lg:max-w-2xl mx-auto leading-relaxed px-2 sm:px-0"
+          className="mx-auto mt-4 max-w-2xl px-2 text-base leading-relaxed text-muted-foreground sm:px-0 sm:text-lg lg:text-xl"
         >
           Stay ahead of cyber threats with expert insights, industry trends, and practical security guidance tailored for African businesses and Ethiopian organizations.
         </motion.p>
 
-        {/* Search Bar */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="max-w-md mx-auto mb-8"
+          className="mt-8 w-full max-w-md px-2 sm:px-0"
         >
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <Input
               type="text"
               placeholder="Search blog posts..."
-              className="w-full pl-10 pr-4 py-3 bg-[#1C2541]/30 backdrop-blur-sm border border-[#176a9d]/30 rounded-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#176a9d]/50"
+              className="w-full rounded-full border border-border/60 bg-background/80 px-10 py-3 text-sm text-foreground shadow-lg shadow-primary/10 backdrop-blur placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-primary/50"
             />
           </div>
         </motion.div>
@@ -155,42 +134,58 @@ export function HeroBlog() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.7 }}
-          className="flex flex-wrap gap-2 justify-center items-center px-2 sm:px-0"
+          className="mt-6 flex flex-wrap items-center justify-center gap-2 px-2 sm:px-0"
         >
-          <Badge variant="outline" className="bg-[#176a9d]/10 border-[#176a9d]/30 text-gray-300 hover:bg-[#176a9d]/20">
-            Cybersecurity
-          </Badge>
-          <Badge variant="outline" className="bg-[#176a9d]/10 border-[#176a9d]/30 text-gray-300 hover:bg-[#176a9d]/20">
-            Threat Intelligence
-          </Badge>
-          <Badge variant="outline" className="bg-[#176a9d]/10 border-[#176a9d]/30 text-gray-300 hover:bg-[#176a9d]/20">
-            AI & ML
-          </Badge>
-          <Badge variant="outline" className="bg-[#176a9d]/10 border-[#176a9d]/30 text-gray-300 hover:bg-[#176a9d]/20">
-            Ethiopian Context
-          </Badge>
+          {[
+            "Cybersecurity",
+            "Threat Intelligence",
+            "AI & ML",
+            "Ethiopian Context",
+            "Interviews",
+            "Events",
+          ].map((label) => (
+            <Badge
+              key={label}
+              variant="outline"
+              className="rounded-full border-border/60 bg-background/80 px-4 py-2 text-xs font-medium text-muted-foreground transition-colors hover:border-primary hover:bg-primary/10 hover:text-primary"
+            >
+              {label}
+            </Badge>
+          ))}
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.8 }}
-          className="mt-6 sm:mt-8 text-base sm:text-lg text-[#176a9d] font-semibold"
+          transition={{ duration: 1, delay: 0.9 }}
+          className="mt-8 flex flex-wrap items-center justify-center gap-4 text-xs uppercase tracking-[0.3em] text-muted-foreground"
         >
-          Knowledge. Security. Innovation.
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1 }}
-          className="mt-3 sm:mt-4 text-xs sm:text-sm text-gray-400 flex items-center justify-center gap-2"
-        >
-          <span>Weekly Updates</span>
-          <span className="text-[#176a9d]">•</span>
-          <span>Expert Analysis</span>
-          <span className="text-[#176a9d]">•</span>
+          <span className="flex items-center gap-1">
+            <Clock className="h-3.5 w-3.5 text-primary" /> Weekly Updates
+          </span>
+          <span className="text-primary">•</span>
+          <span className="flex items-center gap-1">
+            <User className="h-3.5 w-3.5 text-primary" /> Expert Analysis
+          </span>
+          <span className="text-primary">•</span>
           <span>Local Insights</span>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1 }}
+          className="mt-6 flex flex-col items-center gap-3 text-xs uppercase tracking-[0.3em] text-primary/60"
+        >
+          <span>Filter by topic</span>
+          <div className="flex items-center gap-3">
+            <Button variant="ghost" size="sm" className="rounded-full border border-border/60 bg-background/70 px-4 py-2 text-xs font-medium text-muted-foreground hover:border-primary hover:text-primary">
+              <Filter className="mr-2 h-3.5 w-3.5" /> Latest
+            </Button>
+            <Button variant="ghost" size="sm" className="rounded-full border border-border/60 bg-background/70 px-4 py-2 text-xs font-medium text-muted-foreground hover:border-primary hover:text-primary">
+              <Calendar className="mr-2 h-3.5 w-3.5" /> Events
+            </Button>
+          </div>
         </motion.div>
       </div>
     </section>

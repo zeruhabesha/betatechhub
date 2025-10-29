@@ -40,6 +40,17 @@ export function InteractiveBackground() {
           initial={{ opacity: 0 }}
           animate={{ opacity: [0.08, 0.2, 0.08] }}
           transition={{ repeat: Number.POSITIVE_INFINITY, duration: 12 }}
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(circle at top, color-mix(in oklab, var(--primary) 25%, transparent) 0%, transparent 65%)",
+          }}
+        />
+        <div className="absolute inset-0 opacity-20">
+          <svg width="100%" height="100%" className="absolute inset-0 text-primary/40">
+            <defs>
+              <pattern id="hexagons" x="0" y="0" width="100" height="87" patternUnits="userSpaceOnUse">
+                <polygon points="50,1 85,25 85,62 50,86 15,62 15,25" fill="none" stroke="currentColor" strokeWidth="0.5" />
           className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(23,106,157,0.35),transparent_65%)]"
         />
         <div className="absolute inset-0 opacity-10">
@@ -74,6 +85,7 @@ export function InteractiveBackground() {
         return (
           <motion.div
             key={index}
+          className="absolute text-primary/30"
             className="absolute text-[#176a9d]/25"
             initial={position}
             animate={{
@@ -97,6 +109,7 @@ export function InteractiveBackground() {
       {[...Array(5)].map((_, i) => (
         <motion.div
           key={`stream-${i}`}
+          className="absolute w-px bg-gradient-to-b from-transparent via-primary/30 to-transparent"
           className="absolute w-px bg-gradient-to-b from-transparent via-[#176a9d]/40 to-transparent"
           style={{
             left: `${20 + i * 20}%`,
