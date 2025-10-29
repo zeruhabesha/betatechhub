@@ -87,10 +87,7 @@ export function Navigation() {
             </LayoutGroup>
             <div className="flex items-center gap-2">
               <Button className="group relative overflow-hidden rounded-full bg-gradient-to-r from-primary via-primary/80 to-accent text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 lg:px-6">
-                <span className="relative z-10 flex items-center gap-2">
-                  Start a Project
-                  <Sparkles className="h-4 w-4" />
-                </span>
+                
                 <span className="absolute inset-0 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               </Button>
               <Button
@@ -148,11 +145,7 @@ export function Navigation() {
                   <span className="text-base">{item.label}</span>
                 </Link>
               ))}
-              <div className="px-3 py-2">
-                <Button className="w-full rounded-full bg-gradient-to-r from-primary via-primary/80 to-accent py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20">
-                  Start a Project
-                </Button>
-              </div>
+            
             </div>
           </div>
         )}
