@@ -7,12 +7,10 @@ import { useEffect, useState } from 'react';
 const HeroClient = dynamic(() => import('./Hero.client'), {
   ssr: false,
   loading: () => (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0B132B] via-[#1C2541] to-[#0B132B]">
-      <div className="text-center px-4">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-          BETATECHHUB
-        </h1>
-        <p className="text-gray-300 text-lg sm:text-xl">Loading...</p>
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-background via-muted/50 to-background">
+      <div className="px-4 text-center">
+        <h1 className="mb-6 text-3xl font-bold text-foreground sm:text-4xl md:text-5xl lg:text-6xl">BETATECHHUB</h1>
+        <p className="text-lg text-muted-foreground sm:text-xl">Loading...</p>
       </div>
     </div>
   ),
