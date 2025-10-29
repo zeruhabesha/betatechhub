@@ -12,6 +12,8 @@ const focusAreas = [
   { icon: Database, label: 'Data Privacy', description: 'Safeguard critical records with resilient controls' },
 ];
 
+import { HeroBackdrop } from "@/components/HeroBackdrop"
+
 export function HeroServices() {
   const [isClient, setIsClient] = useState(false);
   const particles = useMemo(() => new Array(24).fill(0), []);
@@ -21,7 +23,7 @@ export function HeroServices() {
   }, []);
 
   return (
-    <section className="hero-surface pb-24 pt-28 sm:pt-32">
+    <section className="hero-surface">
       <HeroBackdrop imageSrc="/cloud-security-expert.png">
         <div className="absolute inset-0">
           <div className="absolute left-6 top-12 h-24 w-24 rounded-3xl border border-border/40 bg-card/40 backdrop-blur-sm sm:h-32 sm:w-32" />
@@ -30,18 +32,17 @@ export function HeroServices() {
         </div>
       </HeroBackdrop>
 
-      {isClient && (
+      {mounted && (
         <>
           {particles.map((_, index) => (
             <motion.div
-              // eslint-disable-next-line react/no-array-index-key
-              key={`particle-${index}`}
+              key={i}
               className={`absolute rounded-full ${
-                index % 3 === 0
-                  ? 'h-1.5 w-1.5 bg-primary sm:h-2 sm:w-2'
-                  : index % 3 === 1
-                    ? 'h-1 w-1 bg-primary/70'
-                    : 'h-1 w-1 bg-primary/40 sm:h-1.5 sm:w-1.5'
+                i % 3 === 0
+                  ? "w-1.5 h-1.5 sm:w-2 sm:h-2 bg-primary"
+                  : i % 3 === 1
+                    ? "w-1 h-1 bg-primary/70"
+                    : "w-1 h-1 sm:w-1.5 sm:h-1.5 bg-primary/40"
               }`}
               initial={{
                 x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1200),
@@ -65,8 +66,7 @@ export function HeroServices() {
 
           {[Shield, Cloud, Cpu, Network, Database, Zap].map((Icon, index) => (
             <motion.div
-              // eslint-disable-next-line react/no-array-index-key
-              key={`icon-${index}`}
+              key={`icon-${i}`}
               className="absolute opacity-20"
               initial={{
                 x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1200),
@@ -83,7 +83,7 @@ export function HeroServices() {
                 delay: index * 1.5,
               }}
             >
-              <Icon className="h-6 w-6 text-primary/45" />
+              <Icon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-primary/45" />
             </motion.div>
           ))}
         </>
@@ -97,7 +97,7 @@ export function HeroServices() {
           className="mb-6 sm:mb-8"
         >
           <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-background/70 px-3 py-1.5 text-xs uppercase tracking-[0.3em] text-primary backdrop-blur-sm sm:px-4 sm:py-2">
-            <Shield className="h-4 w-4" />
+            <Shield className="w-3 h-3 sm:w-4 sm:h-4" />
             <span>Our Services</span>
           </div>
         </motion.div>
@@ -106,19 +106,16 @@ export function HeroServices() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="px-4 text-3xl font-bold leading-tight text-foreground sm:px-0 sm:text-4xl md:text-5xl lg:text-6xl"
+          className="px-2 text-3xl font-bold leading-tight text-foreground sm:px-0 sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
         >
-          Advanced{' '}
-          <span className="bg-gradient-to-r from-primary via-primary/80 to-accent bg-clip-text text-transparent">
-            Security Services
-          </span>
+          Advanced <span className="bg-gradient-to-r from-primary via-primary/80 to-accent bg-clip-text text-transparent">Security Services</span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mx-auto mt-4 max-w-2xl px-4 text-base leading-relaxed text-muted-foreground sm:px-0 sm:text-lg"
+          className="mx-auto mt-4 max-w-2xl px-2 text-base leading-relaxed text-muted-foreground sm:px-0 sm:text-lg lg:text-xl"
         >
           Comprehensive cybersecurity solutions tailored for African businesses. From threat detection to cloud security, we
           protect your digital assets with cutting-edge technology.
@@ -128,32 +125,36 @@ export function HeroServices() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-8 grid w-full gap-4 text-left sm:grid-cols-3"
+          className="mt-6 flex flex-col items-center justify-center gap-3 px-2 text-muted-foreground sm:flex-row sm:gap-5 sm:px-0"
         >
-          {focusAreas.map((focus) => {
-            const Icon = focus.icon;
-            return (
-              <div
-                key={focus.label}
-                className="flex flex-col gap-3 rounded-2xl border border-border/70 bg-card/80 p-5 shadow-lg shadow-primary/10 backdrop-blur"
-              >
-                <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/15 text-primary">
-                  <Icon className="h-5 w-5" />
-                </span>
-                <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.25em] text-primary/70">{focus.label}</p>
-                  <p className="mt-2 text-sm text-muted-foreground">{focus.description}</p>
-                </div>
-              </div>
-            );
-          })}
+          <div className="flex items-center gap-2">
+            <Cloud className="w-4 h-4 text-primary" />
+            <span className="text-sm">Cloud Security</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Network className="w-4 h-4 text-primary" />
+            <span className="text-sm">Network Protection</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Zap className="w-4 h-4 text-primary" />
+            <span className="text-sm">AI-Powered Defense</span>
+          </div>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.8 }}
-          className="mt-6 flex flex-wrap items-center justify-center gap-4 text-xs uppercase tracking-[0.3em] text-muted-foreground"
+          className="mt-6 text-base font-semibold uppercase tracking-[0.3em] text-primary/70 sm:text-lg"
+        >
+          Secure. Innovate. Excel.
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1 }}
+          className="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs uppercase tracking-[0.3em] text-muted-foreground"
         >
           <span>8+ Security Services</span>
           <span className="text-primary">•</span>

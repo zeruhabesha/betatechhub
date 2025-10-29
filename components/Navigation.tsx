@@ -1,9 +1,10 @@
 'use client';
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { LayoutGroup, motion } from 'framer-motion';
+import { useState } from "react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { Button } from "@/components/ui/button"
+import { LayoutGroup, motion } from "framer-motion"
 import {
   Menu,
   X,
@@ -16,33 +17,22 @@ import {
   Moon,
   Sun,
   Sparkles,
-} from 'lucide-react';
-import { useTheme } from 'next-themes';
-
-import { Button } from '@/components/ui/button';
-
-const navItems = [
-  { href: '/', label: 'Home', icon: Home },
-  { href: '/services', label: 'Services', icon: Shield },
-  { href: '/about', label: 'About', icon: Users },
-  { href: '/blog', label: 'Blog', icon: BookOpen },
-  { href: '/resources', label: 'Resources', icon: BookOpen },
-  { href: '/dashboard', label: 'Dashboard', icon: Settings },
-  { href: '/contact', label: 'Contact', icon: Phone },
-];
+} from "lucide-react"
+import { useTheme } from "next-themes"
 
 export function Navigation() {
-  const [isOpen, setIsOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
-  const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false)
+  const { theme, setTheme } = useTheme()
+  const pathname = usePathname()
 
   const toggleTheme = () => setTheme(theme === 'light' ? 'dark' : 'light');
 
   return (
-    <nav className="fixed left-0 right-0 top-0 z-50">
+    <nav className="fixed top-0 left-0 right-0 z-50">
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/90 via-background/80 to-background/40" />
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mt-4 flex items-center justify-between rounded-2xl border border-border/70 bg-background/80 px-4 py-3 backdrop-blur-xl shadow-lg shadow-primary/5">
+          {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <span className="relative inline-flex items-center justify-center overflow-hidden rounded-full bg-primary/10 p-2 text-primary">
               <Shield className="h-6 w-6" />
@@ -56,37 +46,37 @@ export function Navigation() {
             <span className="text-lg font-semibold tracking-tight text-foreground md:text-xl">BETA TECH HUB</span>
           </Link>
 
+          {/* Desktop Navigation */}
           <div className="hidden items-center space-x-3 md:flex lg:space-x-4">
             <LayoutGroup>
               <div className="flex items-center gap-1 rounded-full border border-border/80 bg-card/70 p-1 backdrop-blur">
                 {navItems.map((item) => {
-                  const isActive = pathname === item.href;
-                  const Icon = item.icon;
-
+                  const isActive = pathname === item.href
                   return (
                     <Link key={item.href} href={item.href} className="relative block">
                       <motion.span
                         whileHover={{ scale: 1.02 }}
                         className={`flex items-center gap-2 rounded-full px-3 py-2 text-sm font-medium transition-colors duration-200 ${
-                          isActive ? 'text-primary-foreground' : 'text-muted-foreground hover:text-primary'
+                          isActive
+                            ? "text-primary-foreground"
+                            : "text-muted-foreground hover:text-primary"
                         }`}
                       >
                         {isActive && (
                           <motion.span
                             layoutId="nav-pill"
                             className="absolute inset-0 -z-10 rounded-full bg-gradient-to-r from-primary to-primary/70 shadow-lg shadow-primary/20"
-                            transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                            transition={{ type: "spring", stiffness: 400, damping: 30 }}
                           />
                         )}
-                        <Icon className="h-4 w-4" />
+                        <item.icon className="h-4 w-4" />
                         <span>{item.label}</span>
                       </motion.span>
                     </Link>
-                  );
+                  )
                 })}
               </div>
             </LayoutGroup>
-
             <div className="flex items-center gap-2">
               <Button className="group relative overflow-hidden rounded-full bg-gradient-to-r from-primary via-primary/80 to-accent text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 lg:px-6">
                 <span className="relative z-10 flex items-center gap-2">
@@ -98,8 +88,8 @@ export function Navigation() {
               <Button
                 variant="outline"
                 size="icon"
-                onClick={toggleTheme}
-                className="relative rounded-full border-border/80 bg-card/60 backdrop-blur"
+                onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+                className="rounded-full border-border/80 bg-card/60 backdrop-blur"
               >
                 <Sun className="h-[1.1rem] w-[1.1rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
                 <Moon className="absolute h-[1.1rem] w-[1.1rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
@@ -108,8 +98,14 @@ export function Navigation() {
             </div>
           </div>
 
+          {/* Mobile menu button */}
           <div className="flex items-center md:hidden">
-            <Button variant="ghost" size="sm" onClick={toggleTheme} className="mr-2 text-foreground">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+              className="mr-2 text-foreground"
+            >
               <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
               <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
               <span className="sr-only">Toggle theme</span>
@@ -128,24 +124,21 @@ export function Navigation() {
         {isOpen && (
           <div className="md:hidden">
             <div className="mt-4 space-y-2 rounded-2xl border border-border/80 bg-background/95 p-4 shadow-xl shadow-primary/10 backdrop-blur-xl">
-              {navItems.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`flex items-center space-x-3 rounded-xl px-4 py-3 text-sm font-medium transition-all duration-200 ${
-                      pathname === item.href
-                        ? 'bg-gradient-to-r from-primary/20 to-accent/20 text-primary'
-                        : 'text-muted-foreground hover:bg-card/60 hover:text-primary'
-                    }`}
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <Icon className="h-5 w-5" />
-                    <span className="text-base">{item.label}</span>
-                  </Link>
-                );
-              })}
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`flex items-center space-x-3 rounded-xl px-4 py-3 text-sm font-medium transition-all duration-200 ${
+                    pathname === item.href
+                      ? "bg-gradient-to-r from-primary/20 to-accent/20 text-primary"
+                      : "text-muted-foreground hover:bg-card/60 hover:text-primary"
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  <item.icon className="h-5 w-5" />
+                  <span className="text-base">{item.label}</span>
+                </Link>
+              ))}
               <div className="px-3 py-2">
                 <Button className="w-full rounded-full bg-gradient-to-r from-primary via-primary/80 to-accent py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20">
                   Start a Project

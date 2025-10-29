@@ -1,7 +1,6 @@
-'use client';
-
-import { motion } from 'framer-motion';
-import { Shield, Users, Award, Target } from 'lucide-react';
+import { Shield, Users, Award, Target } from "lucide-react"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { motion } from "framer-motion"
 
 const reasons = [
   {
@@ -36,25 +35,21 @@ const reasons = [
 
 export function WhyChooseUs() {
   return (
-    <section className="relative overflow-hidden rounded-3xl border border-border/60 bg-card/85 p-10 shadow-xl shadow-primary/10 backdrop-blur">
-      <div className="pointer-events-none absolute inset-0 opacity-70">
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              'radial-gradient(circle at top left, color-mix(in oklab, var(--primary) 16%, transparent) 0%, transparent 60%), linear-gradient(180deg, transparent, color-mix(in oklab, var(--muted) 25%, transparent))',
-          }}
-        />
+    <section className="relative overflow-hidden py-20 px-4 sm:px-6 lg:px-8">
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0b1227] via-[#101d3f] to-[#05080f]" />
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(23,106,157,0.4),transparent_70%)]" />
       </div>
+      <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(23,106,157,0.15)_0%,transparent_55%,rgba(23,106,157,0.1)_100%)]" />
 
-      <div className="relative z-10 mx-auto max-w-6xl">
+      <div className="relative mx-auto max-w-7xl">
         <div className="text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-background/80 px-4 py-2 text-xs uppercase tracking-[0.35em] text-primary backdrop-blur"
+            className="inline-flex items-center gap-2 rounded-full border border-[#176a9d]/30 bg-[#0b1227]/60 px-4 py-2 text-xs uppercase tracking-[0.35em] text-[#9acdea] backdrop-blur"
           >
             Trusted expertise
           </motion.div>
@@ -63,7 +58,7 @@ export function WhyChooseUs() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="mt-6 text-3xl font-bold text-foreground sm:text-4xl"
+            className="mt-6 text-3xl font-bold text-white sm:text-4xl"
           >
             Why Choose BETATECHHUB?
           </motion.h2>
@@ -72,39 +67,45 @@ export function WhyChooseUs() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-3 text-base text-muted-foreground sm:text-lg"
+            className="mt-3 text-lg text-[#9acdea]"
           >
             <span className="block text-primary">ለምን ቤታተክሃብን መምረጥ ያለብዎት?</span>
-            These strengths make us your trusted ally in Africa&apos;s digital transformation journey.
+            These strengths make us your trusted ally in Africa's digital transformation journey.
           </motion.p>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {reasons.map((reason, index) => {
-            const Icon = reason.icon;
-            return (
-              <motion.div
-                key={reason.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
-                className="flex h-full flex-col rounded-2xl border border-border/60 bg-background/80 p-6 text-left shadow-lg shadow-primary/10 backdrop-blur"
-              >
-                <span className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/15 text-primary">
-                  <Icon className="h-6 w-6" />
-                </span>
-                <h3 className="text-xl font-semibold text-foreground">
-                  {reason.title}
-                  {reason.amharicTitle && (
-                    <span className="mt-2 block text-sm font-normal text-muted-foreground">{reason.amharicTitle}</span>
-                  )}
-                </h3>
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground/90">{reason.description}</p>
-              </motion.div>
-            );
-          })}
+        <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {reasons.map((reason, index) => (
+            <motion.div
+              key={reason.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ y: -10 }}
+              className="h-full"
+            >
+              <Card className="group relative h-full overflow-hidden border border-[#176a9d]/20 bg-[#0c162f]/80 text-left backdrop-blur">
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-[#176a9d]/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <CardHeader className="relative">
+                  <div className="mx-0 mb-5 inline-flex rounded-xl border border-[#176a9d]/30 bg-[#176a9d]/15 p-4 text-[#9acdea] transition-colors duration-300 group-hover:border-[#176a9d]/50 group-hover:bg-[#176a9d]/25">
+                    <reason.icon className="h-7 w-7" />
+                  </div>
+                  <CardTitle className="text-xl text-white">
+                    {reason.title}
+                    {reason.amharicTitle && (
+                      <span className="mt-2 block text-sm font-normal text-[#8aa8c7]">{reason.amharicTitle}</span>
+                    )}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="relative">
+                  <CardDescription className="text-sm leading-relaxed text-[#9fb7d5]">
+                    {reason.description}
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
