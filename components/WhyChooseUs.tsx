@@ -1,5 +1,6 @@
 import { Shield, Users, Award, Target } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { motion } from "framer-motion"
 
 const reasons = [
   {
@@ -34,44 +35,76 @@ const reasons = [
 
 export function WhyChooseUs() {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-card/30">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">Why Choose BETATECHHUB?</h2>
-          <p className="text-lg text-muted-foreground mb-2">
+    <section className="relative overflow-hidden py-20 px-4 sm:px-6 lg:px-8">
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0b1227] via-[#101d3f] to-[#05080f]" />
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(23,106,157,0.4),transparent_70%)]" />
+      </div>
+      <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(23,106,157,0.15)_0%,transparent_55%,rgba(23,106,157,0.1)_100%)]" />
+
+      <div className="relative mx-auto max-w-7xl">
+        <div className="text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 rounded-full border border-[#176a9d]/30 bg-[#0b1227]/60 px-4 py-2 text-xs uppercase tracking-[0.35em] text-[#9acdea] backdrop-blur"
+          >
+            Trusted expertise
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="mt-6 text-3xl font-bold text-white sm:text-4xl"
+          >
+            Why Choose BETATECHHUB?
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mt-3 text-lg text-[#9acdea]"
+          >
             <span className="block text-primary">ለምን ቤታተክሃብን መምረጥ ያለብዎት?</span>
-          </p>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            These core strengths make us your trusted partner in Africa's digital transformation, delivering solutions
-            that protect and empower your business in the Ethiopian and African markets.
-          </p>
+            These strengths make us your trusted ally in Africa's digital transformation journey.
+          </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
           {reasons.map((reason, index) => (
-            <Card
-              key={index}
-              className="bg-card border-border text-center group hover:border-primary/50 transition-all duration-300 hover:transform hover:scale-105"
+            <motion.div
+              key={reason.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ y: -10 }}
+              className="h-full"
             >
-              <CardHeader>
-                <div className="p-4 bg-primary/10 rounded-lg mx-auto mb-4 group-hover:bg-primary/20 transition-colors w-fit">
-                  <reason.icon className="h-8 w-8 text-primary" />
-                </div>
-                <CardTitle className="text-white group-hover:text-primary transition-colors text-xl">
-                  {reason.title}
-                  {reason.amharicTitle && (
-                    <span className="block text-sm font-normal text-muted-foreground mt-1">
-                      {reason.amharicTitle}
-                    </span>
-                  )}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-muted-foreground leading-relaxed">
-                  {reason.description}
-                </CardDescription>
-              </CardContent>
-            </Card>
+              <Card className="group relative h-full overflow-hidden border border-[#176a9d]/20 bg-[#0c162f]/80 text-left backdrop-blur">
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-[#176a9d]/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <CardHeader className="relative">
+                  <div className="mx-0 mb-5 inline-flex rounded-xl border border-[#176a9d]/30 bg-[#176a9d]/15 p-4 text-[#9acdea] transition-colors duration-300 group-hover:border-[#176a9d]/50 group-hover:bg-[#176a9d]/25">
+                    <reason.icon className="h-7 w-7" />
+                  </div>
+                  <CardTitle className="text-xl text-white">
+                    {reason.title}
+                    {reason.amharicTitle && (
+                      <span className="mt-2 block text-sm font-normal text-[#8aa8c7]">{reason.amharicTitle}</span>
+                    )}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="relative">
+                  <CardDescription className="text-sm leading-relaxed text-[#9fb7d5]">
+                    {reason.description}
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            </motion.div>
           ))}
         </div>
       </div>
