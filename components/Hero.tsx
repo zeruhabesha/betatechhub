@@ -1,91 +1,104 @@
-"use client"
+'use client';
 
-import { useState, useEffect } from "react"
-import { motion, useMotionValue, useSpring } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Shield, ArrowRight, Zap, Eye } from "lucide-react"
+import { useEffect, useMemo, useState } from 'react';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { ArrowRight, Eye, Globe2, Lock, Radar, Shield, Sparkles, Zap } from 'lucide-react';
+
+import { Button } from '@/components/ui/button';
+import { HeroBackdrop } from '@/components/HeroBackdrop';
+
+const floatingHighlights = [
+  {
+    icon: Radar,
+    label: 'Real-time SOC',
+    description: '24/7 monitoring from Addis Ababa',
+  },
+  {
+    icon: Lock,
+    label: 'Zero Trust Ready',
+    description: 'Identity-first protection across your stack',
+  },
+  {
+    icon: Globe2,
+    label: 'Pan-African Reach',
+    description: 'Serving 12+ countries across the continent',
+  },
+];
+
+const metrics = [
+  { value: '15 min', label: 'Average Incident Response' },
+  { value: '99.9%', label: 'Threat Detection Accuracy' },
+  { value: 'ISO 27001', label: 'Certified Leadership' },
+];
 
 export function Hero() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  const [isHovered, setIsHovered] = useState(false)
+  const [isHovered, setIsHovered] = useState(false);
+  const [particleCount, setParticleCount] = useState(28);
 
-  const mouseX = useMotionValue(0)
-  const mouseY = useMotionValue(0)
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
-  const springX = useSpring(mouseX, { stiffness: 100, damping: 10 })
-  const springY = useSpring(mouseY, { stiffness: 100, damping: 10 })
+  const springX = useSpring(mouseX, { stiffness: 100, damping: 10 });
+  const springY = useSpring(mouseY, { stiffness: 100, damping: 10 });
+
+  const animatedParticles = useMemo(() => new Array(particleCount).fill(0), [particleCount]);
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const { clientX, clientY } = e
-      setMousePosition({ x: clientX, y: clientY })
-      mouseX.set(clientX)
-      mouseY.set(clientY)
-    }
+    if (typeof window === 'undefined') return;
 
-    window.addEventListener("mousemove", handleMouseMove)
-    return () => window.removeEventListener("mousemove", handleMouseMove)
-  }, [mouseX, mouseY])
+    const handleMouseMove = (event: MouseEvent) => {
+      mouseX.set(event.clientX);
+      mouseY.set(event.clientY);
+    };
+
+    const updateParticles = () => {
+      setParticleCount(window.innerWidth < 768 ? 16 : 30);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('resize', updateParticles);
+    updateParticles();
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('resize', updateParticles);
+    };
+  }, [mouseX, mouseY]);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0B132B] via-[#1C2541] to-[#0B132B] px-4 sm:px-6 lg:px-8">
-      <div className="absolute inset-0">
-        {/* Primary grid pattern */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(23,106,157,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(23,106,157,0.1)_1px,transparent_1px)] bg-[size:30px_30px] sm:bg-[size:40px_40px] lg:bg-[size:50px_50px] animate-pulse" />
+    <section className="hero-surface pb-20 pt-28 sm:pt-32 lg:pt-36">
+      <HeroBackdrop imageSrc="/cybersecurity-network-bg.png">
+        <div className="absolute inset-0">
+          <div className="absolute -top-10 left-8 h-24 w-24 rounded-3xl border border-border/40 bg-card/40 backdrop-blur-sm sm:h-32 sm:w-32 lg:h-40 lg:w-40" />
+          <div className="absolute bottom-20 right-8 h-20 w-20 rounded-full border border-primary/30 bg-primary/10 blur-sm" />
+          <div className="absolute top-1/3 right-10 h-14 w-28 -rotate-6 rounded-3xl border border-border/40 bg-background/60 backdrop-blur" />
         </div>
+      </HeroBackdrop>
 
-        {/* Secondary diagonal pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(23,106,157,0.05)_1px,transparent_1px),linear-gradient(-45deg,rgba(23,106,157,0.05)_1px,transparent_1px)] bg-[size:20px_20px] sm:bg-[size:25px_25px] lg:bg-[size:30px_30px]" />
-        </div>
-
-        {/* Animated circuit pattern */}
-        <div className="absolute inset-0 opacity-15">
-          <div className="absolute top-5 left-5 sm:top-10 sm:left-10 w-16 h-16 sm:w-24 sm:h-24 lg:w-32 lg:h-32 border border-[#176a9d]/20 rounded-lg animate-pulse" />
-          <div
-            className="absolute top-10 right-5 sm:top-20 sm:right-20 w-12 h-12 sm:w-16 sm:h-16 lg:w-24 lg:h-24 border border-[#176a9d]/30 rounded-full animate-bounce"
-            style={{ animationDuration: "3s" }}
-          />
-          <div
-            className="absolute bottom-10 left-5 sm:bottom-20 sm:left-20 w-20 h-10 sm:w-32 sm:h-16 lg:w-40 lg:h-20 border border-[#176a9d]/25 rounded-lg animate-pulse"
-            style={{ animationDelay: "1s" }}
-          />
-          <div
-            className="absolute bottom-16 right-5 sm:bottom-32 sm:right-32 w-8 h-8 sm:w-12 sm:h-12 lg:w-16 lg:h-16 border border-[#176a9d]/20 rounded-full animate-bounce"
-            style={{ animationDuration: "4s", animationDelay: "2s" }}
-          />
-        </div>
-      </div>
-
-      <div className="absolute inset-0 opacity-5">
-        <img src="/cybersecurity-network-bg.png" alt="" className="w-full h-full object-cover mix-blend-screen" />
-      </div>
-
-      {/* Interactive Glow Effect */}
       <motion.div
-        className="absolute w-48 h-48 sm:w-72 sm:h-72 lg:w-96 lg:h-96 rounded-full bg-gradient-radial from-[#176a9d]/30 via-[#176a9d]/10 to-transparent blur-3xl pointer-events-none"
+        className="pointer-events-none absolute h-48 w-48 rounded-full bg-gradient-radial from-primary/20 via-primary/10 to-transparent blur-3xl sm:h-72 sm:w-72 lg:h-96 lg:w-96"
         style={{
           x: springX,
           y: springY,
-          translateX: "-50%",
-          translateY: "-50%",
+          translateX: '-50%',
+          translateY: '-50%',
         }}
       />
 
-      {[...Array(typeof window !== "undefined" && window.innerWidth < 768 ? 15 : 30)].map((_, i) => (
+      {animatedParticles.map((_, index) => (
         <motion.div
-          key={i}
+          // eslint-disable-next-line react/no-array-index-key
+          key={index}
           className={`absolute rounded-full ${
-            i % 3 === 0
-              ? "w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#176a9d]"
-              : i % 3 === 1
-                ? "w-1 h-1 bg-[#2980b9]"
-                : "w-1 h-1 sm:w-1.5 sm:h-1.5 bg-[#176a9d]/70"
+            index % 3 === 0
+              ? 'h-1.5 w-1.5 bg-primary sm:h-2 sm:w-2'
+              : index % 3 === 1
+                ? 'h-1 w-1 bg-primary/70'
+                : 'h-1 w-1 bg-primary/40 sm:h-1.5 sm:w-1.5'
           }`}
           initial={{
-            x: Math.random() * (typeof window !== "undefined" ? window.innerWidth : 1200),
-            y: Math.random() * (typeof window !== "undefined" ? window.innerHeight : 800),
+            x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1200),
+            y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800),
             opacity: 0,
           }}
           animate={{
@@ -98,18 +111,19 @@ export function Hero() {
             duration: 6 + Math.random() * 4,
             repeat: Number.POSITIVE_INFINITY,
             delay: Math.random() * 3,
-            ease: "easeInOut",
+            ease: 'easeInOut',
           }}
         />
       ))}
 
-      {[Shield, Eye, Zap].map((Icon, i) => (
+      {[Shield, Eye, Zap].map((Icon, index) => (
         <motion.div
-          key={`icon-${i}`}
-          className="absolute opacity-10"
+          // eslint-disable-next-line react/no-array-index-key
+          key={`icon-${index}`}
+          className="absolute opacity-20"
           initial={{
-            x: Math.random() * (typeof window !== "undefined" ? window.innerWidth : 1200),
-            y: Math.random() * (typeof window !== "undefined" ? window.innerHeight : 800),
+            x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1200),
+            y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800),
           }}
           animate={{
             y: [null, -20, 20, -15],
@@ -117,75 +131,85 @@ export function Hero() {
             scale: [1, 1.1, 0.9, 1],
           }}
           transition={{
-            duration: 8 + i * 2,
+            duration: 8 + index * 2,
             repeat: Number.POSITIVE_INFINITY,
-            delay: i * 1.5,
+            delay: index * 1.5,
           }}
         >
-          <Icon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-[#176a9d]" />
+          <Icon className="h-6 w-6 text-primary/45 sm:h-7 sm:w-7 lg:h-8 lg:w-8" />
         </motion.div>
       ))}
 
-      <div className="relative z-10 text-center max-w-xs sm:max-w-2xl lg:max-w-4xl mx-auto">
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-10 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="inline-flex items-center gap-3 rounded-full border border-primary/30 bg-background/80 px-4 py-2 text-xs font-medium uppercase tracking-[0.25em] text-primary backdrop-blur"
+        >
+          <Sparkles className="h-4 w-4" />
+          Next-gen cyber defense crafted for Africa
+        </motion.div>
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="mb-6 sm:mb-8"
+          className="max-w-xl"
         >
-          <div className="inline-flex items-center gap-2 bg-[#1C2541]/50 backdrop-blur-sm border border-[#176a9d]/30 rounded-full px-3 py-1.5 sm:px-4 sm:py-2 mb-4 sm:mb-6">
-            <Shield className="w-3 h-3 sm:w-4 sm:h-4 text-[#176a9d]" />
-            <span className="text-xs sm:text-sm text-gray-300">
-              Your trusted partner in Cybersecurity and IT innovation in Africa
-            </span>
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-card/70 px-4 py-2 text-xs text-muted-foreground shadow-lg shadow-primary/10 backdrop-blur">
+            <Shield className="h-4 w-4 text-primary" />
+            <span className="text-foreground">Your trusted partner in Cybersecurity and IT innovation in Africa</span>
           </div>
         </motion.div>
 
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight px-2 sm:px-0"
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="px-2 text-3xl font-bold leading-tight text-foreground sm:px-0 sm:text-5xl lg:text-6xl xl:text-7xl"
         >
-          BETATECHHUB –{" "}
-          <span className="bg-gradient-to-r from-[#176a9d] to-[#2980b9] bg-clip-text text-transparent">
-            Securing Africa's Digital Future
+          BETATECHHUB –{' '}
+          <span className="bg-gradient-to-r from-primary via-primary/80 to-accent bg-clip-text text-transparent">
+            Securing Africa&apos;s Digital Future
           </span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-base sm:text-lg lg:text-xl text-gray-300 mb-6 sm:mb-8 max-w-sm sm:max-w-xl lg:max-w-2xl mx-auto leading-relaxed px-2 sm:px-0"
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="mx-auto max-w-3xl px-2 text-base leading-relaxed text-muted-foreground sm:px-0 sm:text-lg lg:text-xl"
         >
-          Based in the heart of Addis Ababa, BETATECHHUB empowers African businesses with cutting-edge, locally-relevant technology solutions. We blend global cybersecurity expertise with deep understanding of Africa's unique digital landscape to keep your business secure, connected, and competitive.
+          Based in the heart of Addis Ababa, BETATECHHUB empowers African businesses with cutting-edge, locally-relevant
+          technology solutions. We blend global cybersecurity expertise with deep understanding of Africa&apos;s unique digital
+          landscape to keep your business secure, connected, and competitive.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-2 sm:px-0"
+          transition={{ duration: 0.8, delay: 0.45 }}
+          className="flex flex-col items-center justify-center gap-3 px-2 sm:flex-row sm:gap-4 sm:px-0"
         >
           <Button
             size="lg"
-            className="w-full sm:w-auto bg-[#176a9d] hover:bg-[#176a9d]/80 text-white px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-[#176a9d]/25"
+            className="w-full rounded-full px-6 py-3 text-sm font-semibold shadow-lg shadow-primary/25 transition-all duration-300 hover:scale-105 sm:w-auto sm:px-8 sm:py-4 sm:text-base"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
             Get Started Today
             <motion.div animate={{ x: isHovered ? 5 : 0 }} transition={{ duration: 0.2 }}>
-              <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+              <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
             </motion.div>
           </Button>
 
           <Button
             variant="outline"
             size="lg"
-            className="w-full sm:w-auto border-[#176a9d] text-[#176a9d] hover:bg-[#176a9d] hover:text-white px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base rounded-full transition-all duration-300 bg-transparent"
+            className="w-full rounded-full border-primary/40 bg-background/70 px-6 py-3 text-sm font-semibold text-primary transition-all duration-300 hover:bg-primary/10 sm:w-auto sm:px-8 sm:py-4 sm:text-base"
           >
-            <Zap className="mr-2 w-4 h-4 sm:w-5 sm:h-5" />
+            <Zap className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
             Free Security Audit
           </Button>
         </motion.div>
@@ -193,25 +217,69 @@ export function Hero() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.8 }}
-          className="mt-6 sm:mt-8 text-base sm:text-lg text-[#176a9d] font-semibold"
+          transition={{ duration: 1, delay: 0.6 }}
+          className="mt-2 text-sm font-semibold uppercase tracking-[0.3em] text-primary/70 sm:mt-4 sm:text-base"
         >
           Protect. Innovate. Grow.
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1 }}
-          className="mt-3 sm:mt-4 text-xs sm:text-sm text-gray-400 flex items-center justify-center gap-2"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.7 }}
+          className="grid w-full max-w-4xl grid-cols-1 gap-4 sm:grid-cols-3"
         >
-          <span>Trusted by businesses across Africa</span>
-          <span className="text-[#176a9d]">•</span>
-          <span>Proudly Ethiopian</span>
-          <span className="text-[#176a9d]">•</span>
-          <span>Global Standards</span>
+          {metrics.map((metric) => (
+            <div
+              key={metric.label}
+              className="rounded-2xl border border-border/60 bg-card/80 p-4 text-left shadow-lg shadow-primary/10 backdrop-blur"
+            >
+              <p className="text-2xl font-semibold text-foreground lg:text-3xl">{metric.value}</p>
+              <p className="text-xs uppercase tracking-[0.3em] text-primary/70 lg:text-sm">{metric.label}</p>
+            </div>
+          ))}
+        </motion.div>
+
+        <div className="relative flex w-full max-w-5xl flex-col items-center justify-center gap-6 sm:flex-row">
+          {floatingHighlights.map((highlight, index) => {
+            const Icon = highlight.icon;
+            return (
+              <motion.div
+                key={highlight.label}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.9 + index * 0.1 }}
+                whileHover={{ y: -6 }}
+                className="flex w-full flex-1 items-start gap-3 rounded-2xl border border-border/60 bg-card/80 p-4 text-left shadow-lg shadow-primary/10 backdrop-blur"
+              >
+                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/15 text-primary">
+                  <Icon className="h-5 w-5" />
+                </span>
+                <div className="space-y-1 text-left">
+                  <p className="text-sm font-semibold uppercase tracking-[0.25em] text-primary/70">{highlight.label}</p>
+                  <p className="text-sm text-muted-foreground">{highlight.description}</p>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.2 }}
+          className="mt-6 flex flex-col items-center gap-2 text-xs uppercase tracking-[0.3em] text-primary/60"
+        >
+          <span>Scroll to explore our platform</span>
+          <span className="flex h-10 w-10 items-center justify-center rounded-full border border-primary/30">
+            <motion.span
+              animate={{ y: [0, 6, 0] }}
+              transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}
+              className="block h-2 w-2 rounded-full bg-primary/70"
+            />
+          </span>
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

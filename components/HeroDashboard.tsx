@@ -1,179 +1,110 @@
-"use client"
+'use client';
 
-import { motion } from "framer-motion"
-import { useState, useEffect } from "react"
-import { Activity, Shield, AlertTriangle, TrendingUp } from "lucide-react"
+import { useEffect, useMemo, useState } from 'react';
+import { motion } from 'framer-motion';
+import { Activity, BarChart3, Shield } from 'lucide-react';
+
+import { HeroBackdrop } from '@/components/HeroBackdrop';
+
+const dashboardHighlights = [
+  { icon: Shield, label: 'Threat Coverage', detail: 'Live detection metrics and alert trends' },
+  { icon: BarChart3, label: 'Executive Reporting', detail: 'Board-ready summaries in minutes' },
+  { icon: Activity, label: 'Operational Visibility', detail: 'Track response SLAs and critical workflows' },
+];
 
 export function HeroDashboard() {
-  const [mounted, setMounted] = useState(false)
+  const [isClient, setIsClient] = useState(false);
+  const particles = useMemo(() => new Array(20).fill(0), []);
 
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    setIsClient(true);
+  }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0B132B] via-[#1C2541] to-[#0B132B] px-4 sm:px-6 lg:px-8">
-      <div className="absolute inset-0">
-        {/* Primary grid pattern */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(23,106,157,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(23,106,157,0.1)_1px,transparent_1px)] bg-[size:30px_30px] sm:bg-[size:40px_40px] lg:bg-[size:50px_50px] animate-pulse" />
+    <section className="hero-surface pb-20 pt-28 sm:pt-32">
+      <HeroBackdrop imageSrc="/dashboard-hero.png">
+        <div className="absolute inset-0">
+          <div className="absolute left-6 top-14 h-24 w-24 rounded-3xl border border-border/40 bg-card/40 backdrop-blur-sm" />
+          <div className="absolute right-10 top-28 h-16 w-32 -rotate-6 rounded-3xl border border-border/40 bg-background/60 backdrop-blur" />
         </div>
+      </HeroBackdrop>
 
-        {/* Secondary diagonal pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(23,106,157,0.05)_1px,transparent_1px),linear-gradient(-45deg,rgba(23,106,157,0.05)_1px,transparent_1px)] bg-[size:20px_20px] sm:bg-[size:25px_25px] lg:bg-[size:30px_30px]" />
-        </div>
-
-        {/* Animated circuit pattern */}
-        <div className="absolute inset-0 opacity-15">
-          <div className="absolute top-5 left-5 sm:top-10 sm:left-10 w-16 h-16 sm:w-24 sm:h-24 lg:w-32 lg:h-32 border border-[#176a9d]/20 rounded-lg animate-pulse" />
-          <div
-            className="absolute top-10 right-5 sm:top-20 sm:right-20 w-12 h-12 sm:w-16 sm:h-16 lg:w-24 lg:h-24 border border-[#176a9d]/30 rounded-full animate-bounce"
-            style={{ animationDuration: "3s" }}
-          />
-          <div
-            className="absolute bottom-10 left-5 sm:bottom-20 sm:left-20 w-20 h-10 sm:w-32 sm:h-16 lg:w-40 lg:h-20 border border-[#176a9d]/25 rounded-lg animate-pulse"
-            style={{ animationDelay: "1s" }}
-          />
-          <div
-            className="absolute bottom-16 right-5 sm:bottom-32 sm:right-32 w-8 h-8 sm:w-12 sm:h-12 lg:w-16 lg:h-16 border border-[#176a9d]/20 rounded-full animate-bounce"
-            style={{ animationDuration: "4s", animationDelay: "2s" }}
-          />
-        </div>
-      </div>
-
-      <div className="absolute inset-0 opacity-5">
-        <img src="/ai-cybersecurity-dashboard.png" alt="" className="w-full h-full object-cover mix-blend-screen" />
-      </div>
-
-      {/* Floating animated elements - only render on client */}
-      {mounted && (
+      {isClient && (
         <>
-          {[...Array(25)].map((_, i) => (
+          {particles.map((_, index) => (
             <motion.div
-              key={i}
-              className={`absolute rounded-full ${i % 3 === 0 ? "w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#176a9d]" : i % 3 === 1 ? "w-1 h-1 bg-[#2980b9]" : "w-1 h-1 sm:w-1.5 sm:h-1.5 bg-[#176a9d]/70"}`}
+              // eslint-disable-next-line react/no-array-index-key
+              key={`particle-${index}`}
+              className="absolute h-1.5 w-1.5 rounded-full bg-primary/35"
               initial={{
-                x: Math.random() * (typeof window !== "undefined" ? window.innerWidth : 1200),
-                y: Math.random() * (typeof window !== "undefined" ? window.innerHeight : 800),
+                x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1200),
+                y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800),
                 opacity: 0,
               }}
               animate={{
-                y: [null, -30, 30, -20, 10],
-                x: [null, 10, -10, 15, -5],
-                opacity: [0, 1, 0.7, 1, 0.3, 1, 0],
-                scale: [1, 1.2, 0.8, 1.1, 1],
+                y: [null, -20, 20, -10],
+                x: [null, 15, -15, 10],
+                opacity: [0, 0.8, 0.4, 0.8, 0],
               }}
-              transition={{
-                duration: 6 + Math.random() * 4,
-                repeat: Number.POSITIVE_INFINITY,
-                delay: Math.random() * 3,
-                ease: "easeInOut",
-              }}
+              transition={{ duration: 6 + Math.random() * 3, repeat: Number.POSITIVE_INFINITY, delay: Math.random() * 2 }}
             />
-          ))}
-
-          {[Activity, Shield, AlertTriangle, TrendingUp].map((Icon, i) => (
-            <motion.div
-              key={`icon-${i}`}
-              className="absolute opacity-10"
-              initial={{
-                x: Math.random() * (typeof window !== "undefined" ? window.innerWidth : 1200),
-                y: Math.random() * (typeof window !== "undefined" ? window.innerHeight : 800),
-              }}
-              animate={{
-                y: [null, -20, 20, -15],
-                rotate: [0, 10, -10, 5, 0],
-                scale: [1, 1.1, 0.9, 1],
-              }}
-              transition={{
-                duration: 8 + i * 2,
-                repeat: Number.POSITIVE_INFINITY,
-                delay: i * 1.5,
-              }}
-            >
-              <Icon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-[#176a9d]" />
-            </motion.div>
           ))}
         </>
       )}
 
-      <div className="relative z-10 text-center max-w-xs sm:max-w-2xl lg:max-w-4xl mx-auto">
+      <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center text-center">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="mb-6 sm:mb-8"
+          className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-background/70 px-4 py-2 text-xs uppercase tracking-[0.35em] text-primary backdrop-blur"
         >
-          <div className="inline-flex items-center gap-2 bg-[#1C2541]/50 backdrop-blur-sm border border-[#176a9d]/30 rounded-full px-3 py-1.5 sm:px-4 sm:py-2 mb-4 sm:mb-6">
-            <Activity className="w-3 h-3 sm:w-4 sm:h-4 text-[#176a9d]" />
-            <span className="text-xs sm:text-sm text-gray-300">
-              Real-time Monitoring
-            </span>
-          </div>
+          Security Dashboard
         </motion.div>
 
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight px-2 sm:px-0"
+          transition={{ duration: 0.8, delay: 0.15 }}
+          className="mt-6 px-4 text-3xl font-bold leading-tight text-foreground sm:px-0 sm:text-5xl"
         >
-          Security <span className="bg-gradient-to-r from-[#176a9d] to-[#2980b9] bg-clip-text text-transparent">Dashboard</span>
+          Real-time intelligence for decisive action
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-base sm:text-lg lg:text-xl text-gray-300 mb-6 sm:mb-8 max-w-sm sm:max-w-xl lg:max-w-2xl mx-auto leading-relaxed px-2 sm:px-0"
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="mx-auto mt-4 max-w-3xl px-4 text-base text-muted-foreground sm:px-0 sm:text-lg"
         >
-          Monitor your organization's security posture in real-time with comprehensive threat detection, vulnerability scanning, and performance analytics.
+          Monitor threats, incidents, and performance metrics from one unified console designed for African enterprises.
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-2 sm:px-0"
+          transition={{ duration: 0.8, delay: 0.45 }}
+          className="mt-10 grid w-full gap-4 text-left sm:grid-cols-3"
         >
-          <div className="flex items-center gap-2 text-gray-300">
-            <Shield className="w-4 h-4" />
-            <span className="text-sm">Live Protection</span>
-          </div>
-          <div className="flex items-center gap-2 text-gray-300">
-            <AlertTriangle className="w-4 h-4" />
-            <span className="text-sm">Threat Alerts</span>
-          </div>
-          <div className="flex items-center gap-2 text-gray-300">
-            <TrendingUp className="w-4 h-4" />
-            <span className="text-sm">Performance Metrics</span>
-          </div>
-        </motion.div>
-
-        {/* Live status indicators */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.8 }}
-          className="mt-6 sm:mt-8 text-base sm:text-lg text-[#176a9d] font-semibold"
-        >
-          Monitor. Detect. Protect.
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1 }}
-          className="mt-3 sm:mt-4 text-xs sm:text-sm text-gray-400 flex items-center justify-center gap-2"
-        >
-          <span>Real-time Monitoring</span>
-          <span className="text-[#176a9d]">•</span>
-          <span>99.9% Uptime</span>
-          <span className="text-[#176a9d]">•</span>
-          <span>Instant Alerts</span>
+          {dashboardHighlights.map((highlight) => {
+            const Icon = highlight.icon;
+            return (
+              <div
+                key={highlight.label}
+                className="flex flex-col gap-3 rounded-2xl border border-border/60 bg-card/80 p-5 shadow-lg shadow-primary/10 backdrop-blur"
+              >
+                <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/15 text-primary">
+                  <Icon className="h-5 w-5" />
+                </span>
+                <div>
+                  <p className="text-sm font-semibold uppercase tracking-[0.25em] text-primary/70">{highlight.label}</p>
+                  <p className="mt-2 text-sm text-muted-foreground">{highlight.detail}</p>
+                </div>
+              </div>
+            );
+          })}
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

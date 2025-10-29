@@ -121,3 +121,30 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .hero-surface {
+    @apply relative flex min-h-screen items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8;
+  }
+
+  .hero-gradient {
+    background:
+      radial-gradient(circle at 20% 20%, color-mix(in oklab, var(--primary) 18%, transparent) 0%, transparent 60%),
+      radial-gradient(circle at 75% 15%, color-mix(in oklab, var(--accent) 14%, transparent) 0%, transparent 62%),
+      linear-gradient(140deg, color-mix(in oklab, var(--background) 94%, var(--muted) 6%), var(--background));
+  }
+
+  .hero-grid {
+    background-image:
+      linear-gradient(color-mix(in oklab, var(--border) 55%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in oklab, var(--border) 55%, transparent) 1px, transparent 1px);
+    background-size: 36px 36px;
+  }
+
+  .hero-dots {
+    background-image:
+      linear-gradient(45deg, color-mix(in oklab, var(--border) 35%, transparent) 1px, transparent 1px),
+      linear-gradient(-45deg, color-mix(in oklab, var(--border) 25%, transparent) 1px, transparent 1px);
+    background-size: 26px 26px;
+  }
+}
