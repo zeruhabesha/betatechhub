@@ -20,20 +20,15 @@ export default function HomePage() {
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(circle at 20% 20%, color-mix(in oklab, var(--primary) 16%, transparent) 0%, transparent 55%), radial-gradient(circle at 80% 10%, color-mix(in oklab, var(--accent) 14%, transparent) 0%, transparent 60%)",
+              "radial-gradient(circle at 20% 20%, rgba(23,106,157,0.15) 0%, transparent 55%), radial-gradient(circle at 80% 10%, rgba(35,45,95,0.2) 0%, transparent 60%)",
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-muted/40 to-transparent dark:via-muted/10" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(23,106,157,0.12),transparent_55%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_10%,rgba(35,45,95,0.18),transparent_60%)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/40 to-background dark:via-background/10" />
       </div>
       {/* Hero (client-only, heavy animations removed from SSR) */}
       <HeroWrapper />
 
       {/* Quick stats strip - keeps momentum after hero */}
-      <section className="relative z-20 -mt-24 sm:-mt-28">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-3xl border border-border/60 bg-card/85 p-6 shadow-2xl shadow-primary/10 backdrop-blur">
       <section className="relative z-10 -mt-16 pb-10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="rounded-3xl border border-border/60 bg-card/80 p-6 shadow-2xl shadow-primary/10 backdrop-blur">
@@ -68,19 +63,18 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Why choose us + Threat Map - two-column responsive stack */}
+      {/* Why choose us section */}
       <section className="relative z-10 py-20">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
-          <div>
-            <WhyChooseUs />
-          </div>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <WhyChooseUs />
+        </div>
+      </section>
 
-          <div className="w-full">
-            <div className="sticky top-32">
-              <div className="rounded-3xl border border-border/60 bg-card/70 p-6 shadow-xl shadow-primary/10 backdrop-blur">
-                <ThreatMapWidget />
-              </div>
-            </div>
+      {/* Threat Map section */}
+      <section className="relative z-10 py-10">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="rounded-3xl border border-border/60 bg-card/70 p-6 shadow-xl shadow-primary/10 backdrop-blur">
+            <ThreatMapWidget />
           </div>
         </div>
       </section>
@@ -98,28 +92,29 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Insights grid + newsletter grouped to reduce visual noise */}
-      <section className="relative z-10 py-20">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-4 sm:px-6 lg:grid-cols-3 lg:px-8">
-          <div className="lg:col-span-2">
-            <div className="mb-6 flex flex-col gap-2">
-              <span className="text-xs uppercase tracking-[0.3em] text-primary">Insights</span>
-              <h3 className="text-2xl font-semibold">Latest Intelligence &amp; Analysis</h3>
-            </div>
-            <InsightsGrid />
+      {/* Insights section */}
+      <section className="relative z-10 py-10">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-6 flex flex-col gap-2">
+            <span className="text-xs uppercase tracking-[0.3em] text-primary">Insights</span>
+            <h3 className="text-2xl font-semibold">Latest Intelligence &amp; Analysis</h3>
           </div>
+          <InsightsGrid />
+        </div>
+      </section>
 
-          <aside className="lg:col-span-1">
-            <div className="sticky top-36 space-y-6">
-              <div className="rounded-3xl border border-border/60 bg-card/80 p-6 backdrop-blur">
-                <h4 className="text-lg font-medium">Stay informed</h4>
-                <p className="mt-2 text-sm text-muted-foreground">Get expert analysis and threat intelligence straight to your inbox.</p>
-                <div className="mt-4">
-                  <NewsletterSection />
-                </div>
+      {/* Newsletter section */}
+      <section className="relative z-10 py-10">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          <div className="rounded-3xl border border-border/60 bg-card/80 p-6 backdrop-blur">
+            <div className="text-center">
+              <h4 className="text-2xl font-semibold">Stay informed</h4>
+              <p className="mt-2 text-muted-foreground">Get expert analysis and threat intelligence straight to your inbox.</p>
+              <div className="mt-6">
+                <NewsletterSection />
               </div>
             </div>
-          </aside>
+          </div>
         </div>
       </section>
 

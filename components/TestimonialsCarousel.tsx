@@ -109,7 +109,7 @@ export function TestimonialsCarousel() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -100 }}
                 transition={{ duration: 0.5 }}
-                className="bg-[#1C2541] border border-[#1F7A8C]/20 rounded-2xl p-8 md:p-12 relative"
+                className="bg-card border border-border/60 rounded-2xl p-8 md:p-12 relative"
               >
                 {/* Quote Icon */}
                 <div className="absolute top-6 right-6 opacity-20">
@@ -155,7 +155,7 @@ export function TestimonialsCarousel() {
                           target.src = "/generic-avatar.png";
                         }}
                       />
-                      <div className="absolute -bottom-1 -right-1 bg-[#1F7A8C] text-white text-xs px-2 py-0.5 rounded-full">
+                      <div className="absolute -bottom-1 -right-1 bg-primary text-primary-foreground text-xs px-2 py-0.5 rounded-full">
                         🇪🇹
                       </div>
                     </motion.div>
@@ -178,7 +178,7 @@ export function TestimonialsCarousel() {
                 variant="outline"
                 size="icon"
                 onClick={prevTestimonial}
-                className="border-[#1F7A8C] text-[#1F7A8C] hover:bg-[#1F7A8C] hover:text-white bg-transparent"
+                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent"
               >
                 <ChevronLeft className="w-5 h-5" />
               </Button>
@@ -193,7 +193,7 @@ export function TestimonialsCarousel() {
                       setIsAutoPlaying(false)
                     }}
                     className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      index === currentIndex ? "bg-[#1F7A8C] scale-125" : "bg-gray-600 hover:bg-gray-500"
+                      index === currentIndex ? "bg-primary scale-125" : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
                     }`}
                   />
                 ))}
@@ -203,7 +203,7 @@ export function TestimonialsCarousel() {
                 variant="outline"
                 size="icon"
                 onClick={nextTestimonial}
-                className="border-[#1F7A8C] text-[#1F7A8C] hover:bg-[#1F7A8C] hover:text-white bg-transparent"
+                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent"
               >
                 <ChevronRight className="w-5 h-5" />
               </Button>

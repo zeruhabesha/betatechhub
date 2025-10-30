@@ -73,16 +73,7 @@ export function InteractiveStats() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-border/60 bg-card/90 p-8 text-foreground shadow-lg shadow-primary/10">
-      <div className="pointer-events-none absolute inset-0 opacity-30">
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(circle at top, color-mix(in oklab, var(--primary) 22%, transparent) 0%, transparent 70%)",
-          }}
-        />
-    <div className="relative overflow-hidden rounded-2xl border border-border/60 bg-[#0c162f]/70 p-8 text-foreground shadow-lg shadow-primary/10">
+    <div className="relative overflow-hidden rounded-2xl border border-[#1F7A8C]/30 bg-[#0c162f]/70 p-8 text-foreground shadow-lg shadow-primary/10">
       <div className="pointer-events-none absolute inset-0 opacity-20">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(31,122,140,0.25),transparent_70%)]" />
       </div>
@@ -95,11 +86,7 @@ export function InteractiveStats() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <p className="text-xs uppercase tracking-[0.35em] text-primary/80">Impact</p>
-          <h2 className="mt-2 text-3xl font-bold text-foreground">Security that delivers results</h2>
-          <p className="mt-2 text-sm text-muted-foreground">ውጤታማ የደህንነት መፍትሄዎች</p>
-          <p className="mx-auto mt-3 max-w-2xl text-sm text-muted-foreground/90">
-          <p className="text-xs uppercase tracking-[0.35em] text-primary">Impact</p>
+          <p className="text-xs uppercase tracking-[0.35em] text-[#1F7A8C]">Impact</p>
           <h2 className="mt-2 text-3xl font-bold text-white">Security that delivers results</h2>
           <p className="mt-2 text-sm text-[#89b9ce]">ውጤታማ የደህንነት መፍትሄዎች</p>
           <p className="mx-auto mt-3 max-w-2xl text-sm text-[#a5bed4]">
@@ -117,7 +104,6 @@ export function InteractiveStats() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
-              className="relative overflow-hidden rounded-2xl border border-border/60 bg-card/90 p-6 text-center backdrop-blur transition duration-300 hover:border-primary/50"
               className="relative overflow-hidden rounded-2xl border border-[#1F7A8C]/30 bg-[#0f1d38]/80 p-6 text-center backdrop-blur transition duration-300 hover:border-[#1F7A8C]/60"
             >
               <motion.div
@@ -126,25 +112,11 @@ export function InteractiveStats() {
                   rotate: hoveredIndex === index ? 4 : 0,
                 }}
                 transition={{ duration: 0.3 }}
-                className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/15 text-primary"
                 className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#1F7A8C]/20 text-[#9bd4f2]"
               >
                 <stat.icon className="h-8 w-8" />
               </motion.div>
 
-              <div className="text-4xl font-bold text-foreground">
-                <AnimatedCounter value={stat.value} />
-                <span className="text-primary">{stat.suffix}</span>
-              </div>
-
-              <div className="mt-3">
-                <h3 className="text-base font-semibold text-foreground">{stat.label}</h3>
-                {stat.amharicLabel && <p className="text-xs text-muted-foreground">{stat.amharicLabel}</p>}
-              </div>
-
-              <p className="mt-3 text-sm text-muted-foreground/90">
-                {stat.description}
-                {stat.localContext && <span className="mt-1 block text-xs text-muted-foreground/80">{stat.localContext}</span>}
               <div className="text-4xl font-bold text-white">
                 <AnimatedCounter value={stat.value} />
                 <span className="text-[#1F7A8C]">{stat.suffix}</span>
@@ -164,7 +136,6 @@ export function InteractiveStats() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: hoveredIndex === index ? 1 : 0 }}
                 transition={{ duration: 0.3 }}
-                className="absolute inset-0 bg-gradient-to-br from-primary/15 via-transparent to-transparent"
                 className="absolute inset-0 bg-gradient-to-br from-[#1F7A8C]/15 via-transparent to-transparent"
               />
             </motion.div>

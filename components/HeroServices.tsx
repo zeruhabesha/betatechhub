@@ -13,8 +13,10 @@ export function HeroServices() {
     setMounted(true)
   }, [])
 
+  if (!mounted) return null;
+
   return (
-    <section className="hero-surface">
+    <section className="relative min-h-[60vh] w-full overflow-hidden">
       <HeroBackdrop imageSrc="/cloud-security-expert.png">
         <div className="absolute inset-0">
           <div className="absolute left-6 top-12 h-24 w-24 rounded-3xl border border-border/40 bg-card/40 backdrop-blur-sm sm:h-32 sm:w-32" />

@@ -37,7 +37,7 @@ export function NewsletterSection() {
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <div className="inline-flex items-center gap-2 bg-[#1F7A8C]/20 backdrop-blur-sm border border-[#1F7A8C]/30 rounded-full px-4 py-2 mb-6">
+            <div className="inline-flex items-center gap-2 bg-primary/10 backdrop-blur-sm border border-primary/30 rounded-full px-4 py-2 mb-6">
               <Shield className="w-4 h-4 text-[#1F7A8C]" />
               <span className="text-sm text-gray-300">Security Intelligence</span>
             </div>
@@ -70,14 +70,14 @@ export function NewsletterSection() {
                       placeholder="Enter your email address"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="pl-10 bg-[#1C2541] border-[#1F7A8C]/30 text-white placeholder-gray-400 focus:border-[#1F7A8C] h-12"
+                      className="pl-10 bg-background border-border/60 text-foreground placeholder-muted-foreground focus:border-primary h-12"
                       required
                     />
                   </div>
                   <Button
                     type="submit"
                     disabled={isLoading}
-                    className="bg-[#1F7A8C] hover:bg-[#1F7A8C]/80 text-white px-8 h-12 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 h-12 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isLoading ? (
                       <motion.div

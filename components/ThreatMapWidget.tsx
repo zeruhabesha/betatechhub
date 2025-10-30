@@ -75,7 +75,7 @@ export function ThreatMapWidget() {
   }
 
   return (
-    <section className="py-20 bg-[#0B132B] relative overflow-hidden">
+    <section className="py-20 relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -104,7 +104,7 @@ export function ThreatMapWidget() {
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-[#1C2541] border border-[#176a9d]/20 rounded-xl p-6"
+                className="bg-card border border-border/60 rounded-xl p-6"
               >
                 <div className="flex items-center justify-between">
                   <div>
@@ -119,7 +119,7 @@ export function ThreatMapWidget() {
                       {stat.value.toLocaleString()}
                     </motion.p>
                   </div>
-                  <div className="w-12 h-12 bg-[#176a9d]/20 rounded-full flex items-center justify-center">
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
                     <stat.icon className="w-6 h-6" style={{ color: stat.color }} />
                   </div>
                 </div>
@@ -129,7 +129,7 @@ export function ThreatMapWidget() {
 
           {/* Threat Feed */}
           <div className="lg:col-span-2">
-            <div className="bg-[#1C2541] border border-[#176a9d]/20 rounded-xl p-6 h-96 overflow-hidden">
+            <div className="bg-card border border-border/60 rounded-xl p-6 h-96 overflow-hidden">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-xl font-bold text-white">Recent Threats</h3>
                 <div className="flex items-center gap-2">
@@ -147,7 +147,7 @@ export function ThreatMapWidget() {
                       initial={{ opacity: 0, y: -20, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       transition={{ duration: 0.3 }}
-                      className="flex items-center gap-4 p-3 bg-[#0B132B]/50 rounded-lg border border-[#176a9d]/10 hover:border-[#176a9d]/30 transition-colors"
+                      className="flex items-center gap-4 p-3 bg-muted/50 rounded-lg border border-border/60 hover:border-primary/30 transition-colors"
                     >
                       <div
                         className="w-10 h-10 rounded-full flex items-center justify-center"

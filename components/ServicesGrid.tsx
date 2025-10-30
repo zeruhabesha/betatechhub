@@ -110,7 +110,7 @@ export function ServicesGrid() {
               onMouseLeave={() => setHoveredIndex(null)}
               onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
             >
-              <div className="bg-[#1C2541] border border-[#176a9d]/20 rounded-xl p-8 h-full transition-all duration-500 hover:border-[#176a9d]/50 hover:shadow-2xl hover:shadow-[#176a9d]/20 hover:transform hover:scale-105">
+              <div className="bg-card border border-border/60 rounded-xl p-8 h-full transition-all duration-500 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 hover:transform hover:scale-[1.02]">
                 {/* Animated Background Gradient */}
                 <motion.div
                   initial={{ opacity: 0 }}
@@ -128,7 +128,7 @@ export function ServicesGrid() {
                       rotate: hoveredIndex === index ? 10 : 0,
                     }}
                     transition={{ duration: 0.3 }}
-                    className="inline-flex items-center justify-center w-16 h-16 bg-[#176a9d]/20 rounded-full mb-6"
+                    className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-6"
                   >
                     <service.icon className="w-8 h-8 text-[#176a9d]" />
                   </motion.div>
@@ -173,7 +173,7 @@ export function ServicesGrid() {
 
                   <Button
                     variant="outline"
-                    className="w-full border-[#176a9d] text-[#176a9d] hover:bg-[#176a9d] hover:text-white transition-all duration-300 group bg-transparent"
+                    className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 group bg-transparent"
                   >
                     {expandedIndex === index ? "Hide Details" : "Learn More"}
                     <motion.div animate={{ x: hoveredIndex === index ? 5 : 0 }} transition={{ duration: 0.2 }}>
