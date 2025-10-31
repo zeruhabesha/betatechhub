@@ -20,10 +20,12 @@ export default function HomePage() {
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(circle at 20% 20%, rgba(23,106,157,0.15) 0%, transparent 55%), radial-gradient(circle at 80% 10%, rgba(35,45,95,0.2) 0%, transparent 60%)",
+              "radial-gradient(circle at 20% 24%, color-mix(in oklab, var(--primary) 22%, transparent) 0%, transparent 58%)," +
+              "radial-gradient(circle at 78% 10%, color-mix(in oklab, var(--accent) 26%, transparent) 0%, transparent 62%)," +
+              "linear-gradient(160deg, color-mix(in oklab, var(--background) 90%, var(--secondary) 10%), color-mix(in oklab, var(--background) 80%, var(--accent) 20%))",
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/40 to-background dark:via-background/10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/70 to-background dark:via-background/20" />
       </div>
       {/* Hero (client-only, heavy animations removed from SSR) */}
       <HeroWrapper />
@@ -31,7 +33,7 @@ export default function HomePage() {
       {/* Quick stats strip - keeps momentum after hero */}
       <section className="relative z-10 -mt-16 pb-10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-3xl border border-border/60 bg-card/80 p-6 shadow-2xl shadow-primary/10 backdrop-blur">
+          <div className="rounded-3xl border border-border/50 bg-card/90 p-6 shadow-2xl shadow-primary/15 backdrop-blur">
             <InteractiveStats />
           </div>
         </div>
@@ -39,8 +41,8 @@ export default function HomePage() {
 
       {/* Services - card grid inside container */}
       <section className="relative z-10 py-20">
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-primary/10 to-transparent dark:via-primary/20" />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-primary/12 to-transparent dark:via-primary/25" />
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_10%_0%,color-mix(in_oklab,var(--accent)_18%,transparent)_0,transparent_60%)]" />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-12 flex flex-col gap-6 rounded-3xl border border-border/50 bg-card/70 p-8 backdrop-blur md:flex-row md:items-center md:justify-between">
             <div>
@@ -52,7 +54,7 @@ export default function HomePage() {
             </div>
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 rounded-full border border-primary/60 bg-primary/20 px-5 py-3 text-sm font-semibold text-primary transition hover:bg-primary/30"
+              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary via-primary/90 to-accent/80 px-5 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition hover:shadow-primary/30"
             >
               Explore Services
               <span aria-hidden className="text-base">→</span>
@@ -73,7 +75,7 @@ export default function HomePage() {
       {/* Threat Map section */}
       <section className="relative z-10 py-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-3xl border border-border/60 bg-card/70 p-6 shadow-xl shadow-primary/10 backdrop-blur">
+          <div className="rounded-3xl border border-border/50 bg-card/80 p-6 shadow-xl shadow-accent/15 backdrop-blur">
             <ThreatMapWidget />
           </div>
         </div>
@@ -81,8 +83,8 @@ export default function HomePage() {
 
       {/* Testimonials */}
       <section className="relative z-10 py-20">
-        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/10 via-transparent to-primary/15 dark:from-primary/20 dark:to-primary/25" />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/5 via-transparent to-primary/10" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/12 via-transparent to-accent/15 dark:from-primary/20 dark:to-accent/25" />
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_85%_20%,color-mix(in_oklab,var(--accent)_20%,transparent)_0,transparent_62%)]" />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-8 flex flex-col gap-2">
             <span className="text-xs uppercase tracking-[0.3em] text-primary">Testimonials</span>
@@ -106,7 +108,7 @@ export default function HomePage() {
       {/* Newsletter section */}
       <section className="relative z-10 py-10">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-3xl border border-border/60 bg-card/80 p-6 backdrop-blur">
+          <div className="rounded-3xl border border-border/50 bg-card/85 p-6 shadow-lg shadow-primary/10 backdrop-blur">
             <div className="text-center">
               <h4 className="text-2xl font-semibold">Stay informed</h4>
               <p className="mt-2 text-muted-foreground">Get expert analysis and threat intelligence straight to your inbox.</p>
@@ -120,12 +122,12 @@ export default function HomePage() {
 
       {/* Small CTA band */}
       <section className="relative z-10 py-16">
-        <div className="mx-auto max-w-6xl overflow-hidden rounded-3xl border border-primary/40 bg-gradient-to-r from-primary via-primary/70 to-accent px-6 py-10 text-white shadow-2xl shadow-primary/25 sm:px-10">
+        <div className="mx-auto max-w-6xl overflow-hidden rounded-3xl border border-primary/40 bg-gradient-to-r from-primary via-accent to-secondary px-6 py-10 text-primary-foreground shadow-2xl shadow-primary/25 sm:px-10">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
             <div className="space-y-2">
-              <span className="text-xs uppercase tracking-[0.3em] text-white/80">Next steps</span>
-              <h4 className="text-2xl font-bold">Need a security assessment?</h4>
-              <p className="text-sm text-white/80">Book a free consultation with our experts and get a tailored plan.</p>
+              <span className="text-xs uppercase tracking-[0.3em] text-primary-foreground/70">Next steps</span>
+              <h4 className="text-2xl font-bold text-primary-foreground">Need a security assessment?</h4>
+              <p className="text-sm text-primary-foreground/75">Book a free consultation with our experts and get a tailored plan.</p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
               <Link
@@ -136,7 +138,7 @@ export default function HomePage() {
               </Link>
               <Link
                 href="/services"
-                className="inline-flex items-center justify-center rounded-full border border-white/40 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/15"
+                className="inline-flex items-center justify-center rounded-full border border-primary-foreground/40 px-5 py-3 text-sm font-semibold text-primary-foreground transition hover:bg-primary-foreground/10"
               >
                 Explore services
               </Link>
