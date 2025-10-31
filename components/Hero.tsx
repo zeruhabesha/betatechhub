@@ -64,7 +64,9 @@ export function Hero() {
   }, [mouseX, mouseY])
 
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 hero-surface w-full">
+    // <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 hero-surface">
+          <section className="hero-surface">
+
       <HeroBackdrop imageSrc="/cybersecurity-network-bg.png">
         <div className="absolute inset-0">
           <div className="absolute -top-10 left-8 h-24 w-24 rounded-3xl border border-border/40 bg-card/40 backdrop-blur-sm sm:h-32 sm:w-32 lg:h-40 lg:w-40" />
