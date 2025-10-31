@@ -36,7 +36,7 @@ const insights = [
 
 export function InsightsGrid() {
   return (
-    <section className="py-20 bg-[#0B132B] relative overflow-hidden">
+    <section className="py-20 relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -44,9 +44,9 @@ export function InsightsGrid() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-white mb-4">
+          {/* <h2 className="text-4xl font-bold text-white mb-4">
             Latest <span className="text-[#1F7A8C]">Security Insights</span>
-          </h2>
+          </h2> */}
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
             Stay informed with the latest cybersecurity trends, threats, and best practices
           </p>

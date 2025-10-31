@@ -11,13 +11,13 @@
   --card-foreground: #0f172a;
   --popover: #ffffff;
   --popover-foreground: #0f172a;
-  --primary: #1e40af;
+  --primary: #3b82f6;
   --primary-foreground: #f8fafc;
   --secondary: #f1f5f9;
   --secondary-foreground: #0f172a;
   --muted: #f1f5f9;
   --muted-foreground: #64748b;
-  --accent: #1e40af;
+  --accent: #3b82f6;
   --accent-foreground: #f8fafc;
   --destructive: #ef4444;
   --destructive-foreground: #f8fafc;
@@ -27,7 +27,7 @@
   --radius: 0.5rem;
   
   /* Chart colors */
-  --chart-1: #1e40af;
+  --chart-1: #3b82f6;
   --chart-2: #3b82f6;
   --chart-3: #60a5fa;
   --chart-4: #93c5fd;
@@ -36,7 +36,7 @@
   /* Sidebar */
   --sidebar: #f8fafc;
   --sidebar-foreground: #0f172a;
-  --sidebar-primary: #1e40af;
+  --sidebar-primary: #3b82f6;
   --sidebar-primary-foreground: #f8fafc;
   --sidebar-accent: #f1f5f9;
   --sidebar-accent-foreground: #0f172a;
@@ -76,40 +76,40 @@
   --card-foreground: #ffffff;
   --popover: #171A1F;
   --popover-foreground: #ffffff;
-  --primary: #176a9d; /* Keep blue accent */
+  --primary: #3b82f6; /* Standard blue accent */
   --primary-foreground: #ffffff;
   --secondary: #171A1F;
   --secondary-foreground: #ffffff;
   --muted: #171A1F;
   --muted-foreground: #a8b2d1;
-  --accent: #176a9d;
+  --accent: #3b82f6;
   --accent-foreground: #ffffff;
   --destructive: #e74c3c;
   --destructive-foreground: #ffffff;
   --border: #171A1F;
   --input: #171A1F;
-  --ring: #176a9d;
-  --chart-1: #176a9d;
-  --chart-2: #2980b9;
-  --chart-3: #3498db;
-  --chart-4: #5dade2;
-  --chart-5: #85c1e9;
+  --ring: #3b82f6;
+  --chart-1: #3b82f6;
+  --chart-2: #60a5fa;
+  --chart-3: #93c5fd;
+  --chart-4: #bfdbfe;
+  --chart-5: #dbeafe;
   --radius: 0.625rem;
   --sidebar: #000000;
   --sidebar-foreground: #ffffff;
-  --sidebar-primary: #176a9d;
+  --sidebar-primary: #3b82f6;
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #171A1F;
   --sidebar-accent-foreground: #ffffff;
   --sidebar-border: #171A1F;
-  --sidebar-ring: #176a9d;
+  --sidebar-ring: #3b82f6;
 
   /* Enhanced color variants */
   --success: #2ecc71;
   --success-foreground: #ffffff;
   --warning: #e67e22;
   --warning-foreground: #ffffff;
-  --info: #3498db;
+  --info: #3b82f6;
   --info-foreground: #ffffff;
 
   /* Surface variants */
@@ -194,12 +194,12 @@
 
 ::-webkit-scrollbar-thumb {
   /* Updated scrollbar color to new blue */
-  background: #176a9d;
+  background: #3b82f6;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #2980b9;
+  background: #60a5fa;
 }
 
 /* Smooth scrolling */
@@ -221,10 +221,10 @@ html {
 @keyframes pulse-glow {
   0%,
   100% {
-    box-shadow: 0 0 20px rgba(23, 106, 157, 0.3);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
   }
   50% {
-    box-shadow: 0 0 40px rgba(23, 106, 157, 0.6);
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
   }
 }
 

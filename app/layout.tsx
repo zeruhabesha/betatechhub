@@ -37,8 +37,8 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange={false}>
           <InteractiveBackground />
           <Navigation />
-          <main className="page-content w-full overflow-x-hidden">
-            <div className="mx-auto w-full max-w-[1920px]">
+          <main className="page-content w-full">
+            <div className="mx-auto w-full pt-24">
               {children}
             </div>
           </main>

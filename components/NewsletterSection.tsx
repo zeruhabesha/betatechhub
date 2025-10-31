@@ -28,28 +28,26 @@ export function NewsletterSection() {
   }
 
   return (
-    <section className="py-20 bg-gradient-to-r from-[#1C2541] via-[#0B132B] to-[#1C2541] relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(31,122,140,0.3),transparent_50%),radial-gradient(circle_at_70%_80%,rgba(31,122,140,0.2),transparent_50%)]" />
-      </div>
-
+    <section className="py-20 relative overflow-hidden border-t border-border/40 bg-cover bg-fixed bg-center" style={{ backgroundImage: "url('/images/cyber-security-bg.jpg')" }}>
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
+      
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <div className="inline-flex items-center gap-2 bg-primary/10 backdrop-blur-sm border border-primary/30 rounded-full px-4 py-2 mb-6">
-              <Shield className="w-4 h-4 text-[#1F7A8C]" />
-              <span className="text-sm text-gray-300">Security Intelligence</span>
+            <div className="inline-flex items-center gap-2 border border-border/40 rounded-full px-4 py-2 mb-6">
+              <Shield className="w-4 h-4 text-primary" />
+              <span className="text-sm text-foreground">Security Intelligence</span>
             </div>
 
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               Stay Ahead of{" "}
-              <span className="bg-gradient-to-r from-[#1F7A8C] to-[#3A9BC1] bg-clip-text text-transparent">
+              <span className="text-primary">
                 Cyber Threats
               </span>
             </h2>
 
-            <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
               Get weekly security insights, threat intelligence, and expert analysis delivered to your inbox
             </p>
           </motion.div>
@@ -98,13 +96,13 @@ export function NewsletterSection() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
-                className="bg-[#1C2541] border border-[#1F7A8C]/30 rounded-xl p-8"
+                className="bg-background/80 backdrop-blur-sm border border-border/40 rounded-xl p-8"
               >
-                <div className="w-16 h-16 bg-[#66BB6A]/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <CheckCircle className="w-8 h-8 text-[#66BB6A]" />
+                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border border-border/40">
+                  <CheckCircle className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-2">Welcome to the Team!</h3>
-                <p className="text-gray-400">
+                <h3 className="text-2xl font-bold text-foreground mb-2">Welcome to the Team!</h3>
+                <p className="text-muted-foreground">
                   You're now subscribed to our security intelligence newsletter. Check your inbox for a confirmation
                   email.
                 </p>
@@ -134,8 +132,8 @@ export function NewsletterSection() {
               },
             ].map((feature, index) => (
               <div key={index} className="text-center">
-                <h4 className="text-lg font-semibold text-white mb-2">{feature.title}</h4>
-                <p className="text-gray-400 text-sm">{feature.description}</p>
+                <h4 className="text-lg font-semibold text-foreground mb-2">{feature.title}</h4>
+                <p className="text-muted-foreground text-sm">{feature.description}</p>
               </div>
             ))}
           </motion.div>

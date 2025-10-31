@@ -83,7 +83,7 @@ export function TestimonialsCarousel() {
   }
 
   return (
-    <section className="py-20 bg-gradient-to-b from-background/90 via-background/95 to-background dark:from-[#1C2541] dark:to-[#0B132B] relative overflow-hidden">
+    <section className="py-20 relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -91,11 +91,11 @@ export function TestimonialsCarousel() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-foreground dark:text-white mb-2">
-            What Our <span className="text-primary dark:text-[#1F7A8C]">Clients Say</span>
-          </h2>
-          <p className="text-primary dark:text-[#1F7A8C] text-lg mb-2">ደንበኞቻችን ስለ እኛ ምን ይላሉ?</p>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          {/* <h2 className="text-3xl font-bold text-foreground mb-2">
+            What Our <span className="text-primary">Clients Say</span>
+          </h2> */}
+          {/* <p className="text-primary text-lg mb-2">ደንበኞቻችን ስለ እኛ ምን ይላሉ?</p> */}
+          <p className="text-muted-foreground text-base max-w-2xl mx-auto">
             Trusted by Ethiopia's leading enterprises and institutions for comprehensive, locally-relevant cybersecurity solutions
           </p>
         </motion.div>
@@ -132,7 +132,7 @@ export function TestimonialsCarousel() {
                   </div>
 
                   {/* Content */}
-                  <blockquote className="text-xl md:text-2xl text-foreground dark:text-white leading-relaxed mb-8 font-medium">
+                  <blockquote className="text-xl md:text-2xl text-foreground leading-relaxed mb-8 font-medium">
                     "{testimonials[currentIndex].content}"
                   </blockquote>
 
@@ -161,10 +161,10 @@ export function TestimonialsCarousel() {
                     </motion.div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <h4 className="text-xl font-bold text-foreground dark:text-white">{testimonials[currentIndex].name}</h4>
-                        <span className="text-xs text-gray-400">{testimonials[currentIndex].location}</span>
+                        <h4 className="text-lg font-semibold text-foreground">{testimonials[currentIndex].name}</h4>
+                        <span className="text-xs text-muted-foreground">{testimonials[currentIndex].location}</span>
                       </div>
-                      <p className="text-primary dark:text-[#1F7A8C] text-sm">{testimonials[currentIndex].role}</p>
+                      <p className="text-primary text-sm">{testimonials[currentIndex].role}</p>
                       <p className="text-muted-foreground text-sm">{testimonials[currentIndex].company}</p>
                     </div>
                   </div>

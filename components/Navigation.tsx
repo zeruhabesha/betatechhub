@@ -1,10 +1,11 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { LayoutGroup, motion } from "framer-motion"
+import { useTheme } from "next-themes"
 import {
   Menu,
   X,
@@ -18,12 +19,45 @@ import {
   Sun,
   Sparkles,
 } from "lucide-react"
-import { useTheme } from "next-themes"
+import Image from "next/image"
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const { theme, setTheme } = useTheme()
   const pathname = usePathname()
+  const [mounted, setMounted] = useState(false)
+
+  // Handle image loading errors
+  const handleImageError = (e: any, isLightMode: boolean) => {
+    const target = e.target as HTMLImageElement;
+    const parent = target.parentElement;
+    
+    // If both images fail to load, show fallback text
+    if (parent) {
+      const otherImage = parent.querySelector(isLightMode ? 'img.dark\:block' : 'img:not(.dark\\:block)');
+      if (!otherImage || (otherImage as HTMLImageElement).complete && !(otherImage as HTMLImageElement).naturalHeight) {
+        target.style.display = 'none';
+        const fallback = document.createElement('div');
+        fallback.className = 'flex items-center space-x-2';
+        fallback.innerHTML = `
+          <span class="relative inline-flex items-center justify-center overflow-hidden rounded-full bg-primary/10 p-2 text-primary">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </span>
+          <span class="text-lg font-semibold tracking-tight text-foreground md:text-xl">BETA TECH HUB</span>
+        `;
+        parent.appendChild(fallback);
+      } else {
+        target.style.display = 'none';
+      }
+    }
+  };
+
+  // Only show theme-dependent UI after mounting to avoid hydration mismatch
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const navItems = [
     { href: "/", label: "Home", icon: Home },
@@ -41,17 +75,29 @@ export function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mt-4 flex items-center justify-between rounded-2xl border border-border/70 bg-background/80 px-4 py-3 backdrop-blur-xl shadow-lg shadow-primary/5">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <span className="relative inline-flex items-center justify-center overflow-hidden rounded-full bg-primary/10 p-2 text-primary">
-              <Shield className="h-6 w-6" />
-              <motion.span
-                className="absolute inset-0 rounded-full bg-primary/40"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: [0, 0.35, 0] }}
-                transition={{ repeat: Number.POSITIVE_INFINITY, duration: 4 }}
-              />
-            </span>
-            <span className="text-lg font-semibold tracking-tight text-foreground md:text-xl">BETA TECH HUB</span>
+          <Link href="/" className="flex items-center">
+            <div className="relative h-10 w-40">
+              <div className="relative h-full w-full">
+                {/* Light Mode Logo */}
+                <Image
+                  src="/logo.png"
+                  alt="BETA TECH HUB Logo"
+                  fill
+                  className="h-full w-full object-contain dark:hidden"
+                  priority
+                  onError={(e) => handleImageError(e, true)}
+                />
+                {/* Dark Mode Logo */}
+                <Image
+                  src="/logo-dark.png"
+                  alt="BETA TECH HUB Logo"
+                  fill
+                  className="hidden h-full w-full object-contain dark:block"
+                  priority
+                  onError={(e) => handleImageError(e, false)}
+                />
+              </div>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}

@@ -78,23 +78,22 @@ export function ServicesGrid() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null)
 
   return (
-    <section className="py-20 bg-background/90 dark:bg-[#0B132B] relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/90 to-background/80 dark:from-[#0B132B] dark:via-[#0B132B] dark:to-[#1C2541]" />
-      <div className="container mx-auto px-6 relative z-10">
+    <section className="py-20 relative overflow-hidden">
+      <div className="container mx-auto px-6 relative">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground dark:text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             Our{" "}
             <span className="bg-gradient-to-r from-primary to-[#2980b9] bg-clip-text text-transparent">
               Security Services
             </span>
-            <span className="block text-lg font-normal mt-2 text-primary dark:text-[#2980b9]">የደህንነት አገልግሎቶቻችን</span>
+            <span className="block text-lg font-normal mt-2 text-primary">የደህንነት አገልግሎቶቻችን</span>
           </h2>
-          <p className="text-muted-foreground dark:text-gray-400 text-lg max-w-3xl mx-auto">
+          <p className="text-muted-foreground text-base max-w-3xl mx-auto">
             Comprehensive cybersecurity solutions tailored for Ethiopian businesses, protecting against both global and local threats
           </p>
         </motion.div>
@@ -111,7 +110,7 @@ export function ServicesGrid() {
               onMouseLeave={() => setHoveredIndex(null)}
               onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
             >
-              <div className="bg-card/80 dark:bg-card/80 border border-border/60 dark:border-border/40 rounded-xl p-8 h-full transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 hover:transform hover:scale-[1.01]">
+              <div className="border border-border/60 rounded-xl p-8 h-full transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 hover:transform hover:scale-[1.01]">
                 {/* Animated Background Gradient */}
                 <motion.div
                   initial={{ opacity: 0 }}
@@ -141,7 +140,7 @@ export function ServicesGrid() {
                     )}
                   </div>
 
-                  <p className="text-muted-foreground dark:text-gray-400 mb-6 leading-relaxed">{service.description}</p>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">{service.description}</p>
 
                   {/* Expandable Features */}
                   <motion.div
@@ -166,7 +165,7 @@ export function ServicesGrid() {
                           className="flex items-center gap-3"
                         >
                           <CheckCircle className="w-4 h-4 text-[#176a9d] flex-shrink-0" />
-                          <span className="text-gray-300 text-sm">{feature}</span>
+                          <span className="text-muted-foreground text-sm">{feature}</span>
                         </motion.div>
                       ))}
                     </div>

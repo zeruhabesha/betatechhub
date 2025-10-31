@@ -81,12 +81,12 @@ export function ThreatMapWidget() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <h2 className="text-4xl font-bold text-white mb-4">
-            Live <span className="text-[#176a9d]">Threat Intelligence</span>
-          </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          {/* <h2 className="text-3xl font-bold text-foreground mb-2">
+            Live <span className="text-primary">Threat Intelligence</span>
+          </h2> */}
+          <p className="text-muted-foreground text-base max-w-2xl mx-auto">
             Real-time monitoring of global cybersecurity threats and our response
           </p>
         </motion.div>
@@ -104,17 +104,17 @@ export function ThreatMapWidget() {
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-card border border-border/60 rounded-xl p-6"
+                className="bg-card border border-border rounded-lg p-6 shadow-sm"
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-gray-400 text-sm mb-1">{stat.label}</p>
+                    <p className="text-muted-foreground text-sm mb-1">{stat.label}</p>
                     <motion.p
                       key={stat.value}
                       initial={{ scale: 1.2, color: stat.color }}
                       animate={{ scale: 1, color: "#FFFFFF" }}
                       transition={{ duration: 0.3 }}
-                      className="text-2xl font-bold text-white"
+                      className="text-2xl font-bold text-foreground"
                     >
                       {stat.value.toLocaleString()}
                     </motion.p>
@@ -129,12 +129,12 @@ export function ThreatMapWidget() {
 
           {/* Threat Feed */}
           <div className="lg:col-span-2">
-            <div className="bg-card border border-border/60 rounded-xl p-6 h-96 overflow-hidden">
+            <div className="bg-card border border-border rounded-lg p-6 h-96 overflow-hidden shadow-sm">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-xl font-bold text-white">Recent Threats</h3>
+                <h3 className="text-xl font-bold text-foreground">Recent Threats</h3>
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-[#66BB6A] rounded-full animate-pulse" />
-                  <span className="text-sm text-gray-400">Live</span>
+                  <span className="text-sm text-muted-foreground">Live</span>
                 </div>
               </div>
 
@@ -147,7 +147,7 @@ export function ThreatMapWidget() {
                       initial={{ opacity: 0, y: -20, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       transition={{ duration: 0.3 }}
-                      className="flex items-center gap-4 p-3 bg-muted/50 rounded-lg border border-border/60 hover:border-primary/30 transition-colors"
+                      className="flex items-center gap-4 p-3 bg-muted/30 rounded-lg border border-border hover:border-primary/50 transition-colors"
                     >
                       <div
                         className="w-10 h-10 rounded-full flex items-center justify-center"
@@ -158,7 +158,7 @@ export function ThreatMapWidget() {
 
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-1">
-                          <span className="text-white font-medium">{threatTypes[threat.type].label}</span>
+                          <span className="text-foreground font-medium">{threatTypes[threat.type].label}</span>
                           <span
                             className="px-2 py-1 text-xs rounded-full"
                             style={{
@@ -169,13 +169,13 @@ export function ThreatMapWidget() {
                             {threat.severity.toUpperCase()}
                           </span>
                         </div>
-                        <div className="flex items-center gap-4 text-sm text-gray-400">
+                        <div className="flex items-center gap-4 text-sm text-muted-foreground">
                           <span>{threat.location}</span>
                           <span>{threat.timestamp.toLocaleTimeString()}</span>
                         </div>
                       </div>
 
-                      <div className="text-[#66BB6A] text-sm font-medium">BLOCKED</div>
+                      <div className="text-success text-sm font-medium">BLOCKED</div>
                     </motion.div>
                   )
                 })}
