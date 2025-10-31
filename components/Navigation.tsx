@@ -132,10 +132,10 @@ export function Navigation() {
               </div>
             </LayoutGroup>
             <div className="flex items-center gap-2">
-              <Button className="group relative overflow-hidden rounded-full bg-gradient-to-r from-primary via-primary/80 to-accent text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 lg:px-6">
+              {/* <Button className="group relative overflow-hidden rounded-full bg-gradient-to-r from-primary via-primary/80 to-accent text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 lg:px-6">
                 
                 <span className="absolute inset-0 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-              </Button>
+              </Button> */}
               <Button
                 variant="outline"
                 size="icon"
