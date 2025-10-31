@@ -6,9 +6,9 @@ import { Shield, Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram, Ar
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-border/40 bg-gradient-to-br from-[#040a16] via-[#0b162d] to-[#060910]">
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,rgba(23,106,157,0.35),transparent_65%)]" />
+    <footer className="relative overflow-hidden border-t border-border/40 bg-gradient-to-br from-background via-background/95 to-background dark:from-[#040a16] dark:via-[#0b162d] dark:to-[#060910]">
+      <div className="absolute inset-0 opacity-20 dark:opacity-20">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,rgba(23,106,157,0.15),transparent_65%)] dark:bg-[radial-gradient(circle_at_bottom,rgba(23,106,157,0.35),transparent_65%)]" />
       </div>
       <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <motion.div
@@ -16,18 +16,18 @@ export function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
-          className="mb-16 flex flex-col gap-4 rounded-3xl border border-[#176a9d]/30 bg-[#0b162d]/80 p-8 text-white shadow-lg shadow-primary/10 backdrop-blur sm:flex-row sm:items-center sm:justify-between"
+          className="mb-16 flex flex-col gap-4 rounded-3xl border border-border/40 bg-card/80 p-8 text-foreground shadow-lg shadow-primary/10 backdrop-blur dark:border-[#176a9d]/30 dark:bg-[#0b162d]/80 dark:text-white sm:flex-row sm:items-center sm:justify-between"
         >
           <div>
-            <p className="text-xs uppercase tracking-[0.35em] text-[#82c4e6]">Stay ahead of the threat curve</p>
+            <p className="text-xs uppercase tracking-[0.35em] text-primary dark:text-[#82c4e6]">Stay ahead of the threat curve</p>
             <h3 className="mt-3 text-2xl font-semibold">Join the BETATECHHUB intelligence briefing</h3>
-            <p className="mt-2 max-w-xl text-sm text-[#b6c7dd]">
+            <p className="mt-2 max-w-xl text-sm text-muted-foreground dark:text-[#b6c7dd]">
               Receive curated threat intel, local regulatory updates, and actionable guidance for teams operating across Africa.
             </p>
           </div>
           <Link
             href="/contact"
-            className="group inline-flex items-center gap-3 rounded-full border border-[#176a9d]/40 bg-[#176a9d]/20 px-5 py-3 text-sm font-semibold text-[#9bd4f2] transition duration-300 hover:border-[#176a9d]/60 hover:bg-[#176a9d]/30"
+            className="group inline-flex items-center gap-3 rounded-full border border-primary/40 bg-primary/10 px-5 py-3 text-sm font-semibold text-primary transition duration-300 hover:border-primary/60 hover:bg-primary/20 dark:border-[#176a9d]/40 dark:bg-[#176a9d]/20 dark:text-[#9bd4f2] dark:hover:border-[#176a9d]/60 dark:hover:bg-[#176a9d]/30"
           >
             Speak with an expert
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -38,25 +38,25 @@ export function Footer() {
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
-              <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-[#176a9d]/40 bg-[#176a9d]/20 text-[#9bd4f2]">
+              <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-primary/40 bg-primary/10 text-primary dark:border-[#176a9d]/40 dark:bg-[#176a9d]/20 dark:text-[#9bd4f2]">
                 <Shield className="h-6 w-6" />
               </span>
-              <span className="text-xl font-semibold text-white">BETA TECH HUB</span>
+              <span className="text-xl font-semibold text-foreground dark:text-white">BETA TECH HUB</span>
             </div>
-            <p className="text-sm text-[#9fb7d5]">
+            <p className="text-sm text-muted-foreground dark:text-[#9fb7d5]">
               Empowering African businesses with cutting-edge cybersecurity solutions and innovative technology services.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-[#8aa8c7] transition-colors hover:text-primary">
+              <a href="#" className="text-muted-foreground/80 transition-colors hover:text-primary dark:text-[#8aa8c7] dark:hover:text-primary">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className="text-[#8aa8c7] transition-colors hover:text-primary">
+              <a href="#" className="text-muted-foreground/80 transition-colors hover:text-primary dark:text-[#8aa8c7] dark:hover:text-primary">
                 <Twitter className="h-5 w-5" />
               </a>
-              <a href="#" className="text-[#8aa8c7] transition-colors hover:text-primary">
+              <a href="#" className="text-muted-foreground/80 transition-colors hover:text-primary dark:text-[#8aa8c7] dark:hover:text-primary">
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a href="#" className="text-[#8aa8c7] transition-colors hover:text-primary">
+              <a href="#" className="text-muted-foreground/80 transition-colors hover:text-primary dark:text-[#8aa8c7] dark:hover:text-primary">
                 <Instagram className="h-5 w-5" />
               </a>
             </div>

@@ -83,7 +83,7 @@ export function TestimonialsCarousel() {
   }
 
   return (
-    <section className="py-20 bg-gradient-to-b from-[#1C2541] to-[#0B132B] relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-b from-background/90 via-background/95 to-background dark:from-[#1C2541] dark:to-[#0B132B] relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -91,11 +91,11 @@ export function TestimonialsCarousel() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-white mb-2">
-            What Our <span className="text-[#1F7A8C]">Clients Say</span>
+          <h2 className="text-4xl font-bold text-foreground dark:text-white mb-2">
+            What Our <span className="text-primary dark:text-[#1F7A8C]">Clients Say</span>
           </h2>
-          <p className="text-[#1F7A8C] text-lg mb-2">ደንበኞቻችን ስለ እኛ ምን ይላሉ?</p>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="text-primary dark:text-[#1F7A8C] text-lg mb-2">ደንበኞቻችን ስለ እኛ ምን ይላሉ?</p>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Trusted by Ethiopia's leading enterprises and institutions for comprehensive, locally-relevant cybersecurity solutions
           </p>
         </motion.div>
@@ -132,12 +132,12 @@ export function TestimonialsCarousel() {
                   </div>
 
                   {/* Content */}
-                  <blockquote className="text-xl md:text-2xl text-white leading-relaxed mb-8 font-medium">
+                  <blockquote className="text-xl md:text-2xl text-foreground dark:text-white leading-relaxed mb-8 font-medium">
                     "{testimonials[currentIndex].content}"
                   </blockquote>
 
                   {/* Author */}
-                  <div className="flex items-center gap-4">
+                  <div className="text-yellow-500 flex mb-4">
                     <motion.div
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
@@ -147,7 +147,7 @@ export function TestimonialsCarousel() {
                       <img
                         src={testimonials[currentIndex].avatar}
                         alt={testimonials[currentIndex].name}
-                        className="w-16 h-16 rounded-full border-2 border-[#1F7A8C]/30"
+                        className="flex-1 flex flex-col items-center text-center p-8 bg-card rounded-2xl shadow-2xl border border-border hover:border-primary transition-all duration-300 h-full"
                         onError={(e) => {
                           // Fallback to a generic avatar if the image fails to load
                           const target = e.target as HTMLImageElement;
@@ -161,11 +161,11 @@ export function TestimonialsCarousel() {
                     </motion.div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <h4 className="text-white font-bold text-lg">{testimonials[currentIndex].name}</h4>
+                        <h4 className="text-xl font-bold text-foreground dark:text-white">{testimonials[currentIndex].name}</h4>
                         <span className="text-xs text-gray-400">{testimonials[currentIndex].location}</span>
                       </div>
-                      <p className="text-[#1F7A8C] font-medium">{testimonials[currentIndex].role}</p>
-                      <p className="text-gray-400 text-sm">{testimonials[currentIndex].company}</p>
+                      <p className="text-primary dark:text-[#1F7A8C] text-sm">{testimonials[currentIndex].role}</p>
+                      <p className="text-muted-foreground text-sm">{testimonials[currentIndex].company}</p>
                     </div>
                   </div>
                 </div>

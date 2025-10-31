@@ -35,8 +35,8 @@ const reasons = [
 
 export function WhyChooseUs() {
   return (
-    <section className="relative overflow-hidden py-20 px-4 sm:px-6 lg:px-8">
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0b1227] via-[#101d3f] to-[#05080f]" />
+    <section className="relative overflow-hidden py-20 px-4 sm:px-6 lg:px-8 bg-background dark:bg-[#0b1227]">
+      <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-background/90 to-background/95 dark:from-[#0b1227] dark:via-[#101d3f] dark:to-[#05080f]" />
       <div className="absolute inset-0 opacity-20">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(23,106,157,0.4),transparent_70%)]" />
       </div>

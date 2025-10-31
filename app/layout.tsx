@@ -33,11 +33,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} antialiased`} suppressHydrationWarning>
-      <body className="bg-background text-foreground">
+      <body className="bg-background text-foreground antialiased">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange={false}>
           <InteractiveBackground />
           <Navigation />
-          {children}
+          <main className="page-content w-full overflow-x-hidden">
+            <div className="mx-auto w-full max-w-[1920px]">
+              {children}
+            </div>
+          </main>
           <ChatbotWrapper />
         </ThemeProvider>
       </body>

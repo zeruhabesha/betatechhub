@@ -78,7 +78,8 @@ export function ServicesGrid() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null)
 
   return (
-    <section className="py-20 bg-gradient-to-b from-[#0B132B] to-[#1C2541] relative overflow-hidden">
+    <section className="py-20 bg-background/90 dark:bg-[#0B132B] relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/90 to-background/80 dark:from-[#0B132B] dark:via-[#0B132B] dark:to-[#1C2541]" />
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -86,14 +87,14 @@ export function ServicesGrid() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground dark:text-white mb-6">
             Our{" "}
-            <span className="bg-gradient-to-r from-[#176a9d] to-[#2980b9] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-primary to-[#2980b9] bg-clip-text text-transparent">
               Security Services
             </span>
-            <span className="block text-lg font-normal mt-2 text-[#2980b9]">የደህንነት አገልግሎቶቻችን</span>
+            <span className="block text-lg font-normal mt-2 text-primary dark:text-[#2980b9]">የደህንነት አገልግሎቶቻችን</span>
           </h2>
-          <p className="text-gray-400 text-lg max-w-3xl mx-auto">
+          <p className="text-muted-foreground dark:text-gray-400 text-lg max-w-3xl mx-auto">
             Comprehensive cybersecurity solutions tailored for Ethiopian businesses, protecting against both global and local threats
           </p>
         </motion.div>
@@ -110,12 +111,12 @@ export function ServicesGrid() {
               onMouseLeave={() => setHoveredIndex(null)}
               onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
             >
-              <div className="bg-card border border-border/60 rounded-xl p-8 h-full transition-all duration-500 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 hover:transform hover:scale-[1.02]">
+              <div className="bg-card/80 dark:bg-card/80 border border-border/60 dark:border-border/40 rounded-xl p-8 h-full transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 hover:transform hover:scale-[1.01]">
                 {/* Animated Background Gradient */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{
-                    opacity: hoveredIndex === index ? 0.1 : 0,
+                    opacity: hoveredIndex === index ? (document.documentElement.classList.contains('dark') ? 0.15 : 0.08) : 0,
                   }}
                   transition={{ duration: 0.3 }}
                   className={`absolute inset-0 bg-gradient-to-br ${service.color} rounded-xl`}
@@ -130,17 +131,17 @@ export function ServicesGrid() {
                     transition={{ duration: 0.3 }}
                     className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-6"
                   >
-                    <service.icon className="w-8 h-8 text-[#176a9d]" />
+                    <service.icon className="w-8 h-8 text-primary" />
                   </motion.div>
 
                   <div className="mb-4">
-                    <h3 className="text-2xl font-bold text-white inline-block">{service.title}</h3>
+                    <h3 className="text-2xl font-bold text-foreground dark:text-white inline-block">{service.title}</h3>
                     {service.amharicTitle && (
-                      <span className="ml-3 text-sm text-[#2980b9] font-medium">{service.amharicTitle}</span>
+                      <span className="ml-3 text-sm text-primary dark:text-[#2980b9] font-medium">{service.amharicTitle}</span>
                     )}
                   </div>
 
-                  <p className="text-gray-400 mb-6 leading-relaxed">{service.description}</p>
+                  <p className="text-muted-foreground dark:text-gray-400 mb-6 leading-relaxed">{service.description}</p>
 
                   {/* Expandable Features */}
                   <motion.div

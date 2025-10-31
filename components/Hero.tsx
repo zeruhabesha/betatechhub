@@ -70,12 +70,12 @@ export function Hero() {
           <div className="absolute -top-10 left-8 h-24 w-24 rounded-3xl border border-border/40 bg-card/40 backdrop-blur-sm sm:h-32 sm:w-32 lg:h-40 lg:w-40" />
           <div className="absolute bottom-20 right-8 h-20 w-20 rounded-full border border-primary/30 bg-primary/10 blur-sm" />
           <div className="absolute top-1/3 right-10 h-14 w-28 -rotate-6 rounded-3xl border border-border/40 bg-background/60 backdrop-blur" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(23,106,157,0.25),transparent_65%)]" />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#040711] via-[#0B132B] to-[#121b3a]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(23,106,157,0.15),transparent_65%)] dark:bg-[radial-gradient(circle_at_top,rgba(23,106,157,0.25),transparent_65%)]" />
+          <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-primary/5 dark:from-[#040711] dark:via-[#0B132B] dark:to-[#121b3a]" />
 
           <div className="absolute inset-0">
             <div className="absolute inset-0 opacity-20">
-              <div className="absolute inset-0 bg-[linear-gradient(rgba(23,106,157,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(23,106,157,0.1)_1px,transparent_1px)] bg-[size:30px_30px] sm:bg-[size:40px_40px] lg:bg-[size:50px_50px] animate-pulse" />
+              <div className="absolute inset-0 bg-[linear-gradient(rgba(23,106,157,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(23,106,157,0.05)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(23,106,157,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(23,106,157,0.1)_1px,transparent_1px)] bg-[size:30px_30px] sm:bg-[size:40px_40px] lg:bg-[size:50px_50px] animate-pulse" />
             </div>
           </div>
         </div>
@@ -84,18 +84,18 @@ export function Hero() {
       <motion.div
         className="pointer-events-none absolute h-48 w-48 rounded-full bg-gradient-radial from-primary/25 via-primary/10 to-transparent blur-3xl sm:h-72 sm:w-72 lg:h-96 lg:w-96"
       >
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(23,106,157,0.05)_1px,transparent_1px),linear-gradient(-45deg,rgba(23,106,157,0.05)_1px,transparent_1px)] bg-[size:20px_20px] sm:bg-[size:25px_25px] lg:bg-[size:30px_30px]" />
+        <div className="absolute inset-0 opacity-5 dark:opacity-10">
+          <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(23,106,157,0.03)_1px,transparent_1px),linear-gradient(-45deg,rgba(23,106,157,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(45deg,rgba(23,106,157,0.05)_1px,transparent_1px),linear-gradient(-45deg,rgba(23,106,157,0.05)_1px,transparent_1px)] bg-[size:20px_20px] sm:bg-[size:25px_25px] lg:bg-[size:30px_30px]" />
         </div>
 
         <div className="absolute inset-0 opacity-15">
-          <div className="absolute top-5 left-5 sm:top-10 sm:left-10 w-16 h-16 sm:w-24 sm:h-24 lg:w-32 lg:h-32 border border-[#176a9d]/20 rounded-lg animate-pulse" />
+          <div className="absolute top-5 left-5 sm:top-10 sm:left-10 w-16 h-16 sm:w-24 sm:h-24 lg:w-32 lg:h-32 border border-primary/10 dark:border-[#176a9d]/20 rounded-lg animate-pulse" />
           <div
-            className="absolute top-10 right-5 sm:top-20 sm:right-20 w-12 h-12 sm:w-16 sm:h-16 lg:w-24 lg:h-24 border border-[#176a9d]/30 rounded-full animate-bounce"
+            className="absolute top-10 right-5 sm:top-20 sm:right-20 w-12 h-12 sm:w-16 sm:h-16 lg:w-24 lg:h-24 border border-primary/15 dark:border-[#176a9d]/30 rounded-full animate-bounce"
             style={{ animationDuration: "3s" }}
           />
           <div
-            className="absolute bottom-10 left-5 sm:bottom-20 sm:left-20 w-20 h-10 sm:w-32 sm:h-16 lg:w-40 lg:h-20 border border-[#176a9d]/25 rounded-lg animate-pulse"
+            className="absolute bottom-10 left-5 sm:bottom-20 sm:left-20 w-20 h-10 sm:w-32 sm:h-16 lg:w-40 lg:h-20 border border-primary/10 dark:border-[#176a9d]/25 rounded-lg animate-pulse"
             style={{ animationDelay: "1s" }}
           />
           <div
