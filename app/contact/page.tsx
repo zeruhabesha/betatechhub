@@ -18,7 +18,7 @@ const contactInfo = [
     icon: Phone,
     title: "Phone",
     amharicTitle: "ስልክ",
-    details: ["+251 911 123 456", "+251 911 789 012"],
+    details: ["+251 05 9888 222", "+251 909 523769"],
     description: "24/7 Emergency Support Available",
     localContext: "Amharic & English support",
   },
@@ -34,7 +34,7 @@ const contactInfo = [
     icon: MapPin,
     title: "Address",
     amharicTitle: "አድራሻ",
-    details: ["ICT Park, 6th Floor", "Addis Ababa, Ethiopia"],
+    details: ["Garamuleta BLDG 1st  floor, Wollo sefer, Bole 6th Floor", "Addis Ababa, Ethiopia"],
     description: "Visit us for in-person consultations",
     localContext: "Near Mexico Square, next to Ethiopian Airlines HQ",
   },
@@ -136,7 +136,7 @@ export default function ContactPage() {
                 <p className="text-primary mb-2">መልእክት ይላኩልን</p>
                 <p className="text-muted-foreground">
                   Fill out the form below in English or Amharic and we'll respond within 24 hours. For urgent security matters,
-                  please call our Ethiopian emergency line at +251 911 123 456.
+                  please call our Ethiopian emergency line at +251 05 9888 222.
                 </p>
               </div>
 

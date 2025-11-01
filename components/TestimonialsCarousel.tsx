@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 
 const testimonials = [
   {
-    name: "Alemnesh Kebede",
+    name: "Tariku M",
     role: "CTO",
     company: "Dashen Bank",
     content:

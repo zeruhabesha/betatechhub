@@ -15,28 +15,28 @@ const stats = [
 
 const team = [
   {
-    name: "Alemnesh Kebede",
+    name: "Tariku M",
     role: "Chief Security Officer",
     bio: "15+ years in cybersecurity with expertise in threat intelligence and incident response. Proudly leading our team from Addis Ababa.",
     image: "/ethiopian-woman-tech-leader.jpg",
     localTitle: "የደህንነት ሃላፊ"
   },
   {
-    name: "Tewodros Assefa",
+    name: "Abel M",
     role: "Lead Penetration Tester",
     bio: "Certified ethical hacker with extensive experience in vulnerability assessment. Graduate of Addis Ababa Science and Technology University.",
     image: "/ethiopian-cyber-expert.jpg",
     localTitle: "የስክሪኒንግ ሙያተኛ"
   },
   {
-    name: "Dr. Selamawit Gebre",
+    name: "Tekeste M",
     role: "Security Research Director",
     bio: "PhD in Computer Science from AAiT, specializing in AI-driven threat detection and security automation with a focus on African threat landscapes.",
     image: "/ethiopian-female-researcher.jpg",
     localTitle: "የምርምር ዳይሬክተር"
   },
   {
-    name: "Yohannes Mekonnen",
+    name: "Ermiyas M",
     role: "Cloud Security Architect",
     bio: "Expert in cloud infrastructure security with certifications in AWS, Azure, and GCP. Based in our Addis Ababa innovation hub.",
     image: "/ethiopian-cloud-architect.jpg",

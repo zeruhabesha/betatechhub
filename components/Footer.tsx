@@ -131,7 +131,7 @@ export function Footer() {
                 <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border/40 bg-muted/50 text-foreground">
                   <Phone className="h-4 w-4" />
                 </span>
-                <span className="text-sm">+251 911 123 456</span>
+                <span className="text-sm">+251 05 9888 222</span>
               </div>
               <div className="flex items-center space-x-3 text-muted-foreground">
                 <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border/40 bg-muted/50 text-foreground">
@@ -143,7 +143,7 @@ export function Footer() {
                 <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border/40 bg-muted/50 text-foreground">
                   <MapPin className="h-4 w-4" />
                 </span>
-                <span className="text-sm leading-relaxed">ICT Park, Addis Ababa, Ethiopia</span>
+                <span className="text-sm leading-relaxed">Garamuleta BLDG 1st  floor, Wollo sefer, Bole Addis Ababa, Ethiopia</span>
               </div>
             </div>
           </div>
