@@ -20,7 +20,7 @@ const insights = [
     excerpt: "A comprehensive guide to implementing zero trust security in your organization.",
     readTime: "8 min read",
     date: "2024-01-12",
-    image: "/placeholder-i39rc.png",
+    image: "/zero.jpg",
     trending: false,
   },
   {
@@ -29,7 +29,7 @@ const insights = [
     excerpt: "Key trends and predictions shaping the cybersecurity landscape this year.",
     readTime: "6 min read",
     date: "2024-01-10",
-    image: "/placeholder-5adn1.png",
+    image: "/global.jpg",
     trending: true,
   },
 ]

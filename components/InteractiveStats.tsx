@@ -73,16 +73,27 @@ export function InteractiveStats() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-border/40 bg-fixed p-8 text-foreground shadow-lg " style={{ backgroundImage: "url('/images/cybersecurity-network-bg.jpg')" }}>
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
-      
-      {/* Subtle pattern overlay */}
-      <div className="pointer-events-none absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,var(--primary)/[0.15],transparent_70%)]" />
+    <div className="relative z-0 overflow-hidden rounded-2xl border border-border/40 p-8 text-foreground shadow-lg">
+      {/* Background image that extends beyond the container */}
+      <div 
+        className="absolute -inset-8 -z-20 bg-cover bg-center bg-no-repeat" 
+        style={{ 
+          backgroundImage: "url('/images/cybersecurity-network-bg.jpg')",
+          backgroundAttachment: 'fixed',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }}
+      >
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
+        
+        {/* Subtle pattern overlay */}
+        <div className="pointer-events-none absolute inset-0 opacity-10">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,var(--primary)/[0.15],transparent_70%)]" />
+        </div>
       </div>
 
-      <div className="relative z-10 space-y-12">
+      <div className="relative z-0 space-y-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
