@@ -40,7 +40,7 @@ const team = [
     role: "Cloud Security Architect",
     bio: "Expert in cloud infrastructure security with certifications in AWS, Azure, and GCP. Based in our Addis Ababa innovation hub.",
     image: "/ethiopian-cloud-architect.jpg",
-    localTitle: "የደመና ደህንነት አርክቴክት"
+    localTitle: "የክላውድ ደህንነት አርክቴክት"
   },
 ]
 

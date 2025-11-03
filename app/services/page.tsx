@@ -122,7 +122,7 @@ const services: Service[] = [
     description:
       "Migrate to the cloud, store and analyze data efficiently, and harness the power of big data analytics.",
     amharicDescription:
-      "ወደ ደመና ሽግግር፣ ውሂብ በብቃት ማከማቻ እና ትንተና ከትልቅ ውሂብ ጋር።",
+      "ወደ ክላውድ ሽግግር፣ ውሂብ በብቃት ማከማቻ እና ትንተና ከትልቅ ውሂብ ጋር።",
     features: [
       { title: "Cloud Migration", description: "Landing zones, networking, and security baselines." },
       { title: "Data Platforms", description: "Warehouses, lakes, and real‑time pipelines." },

@@ -48,7 +48,7 @@ const services = [
   {
     icon: Cloud,
     title: "Cloud Security",
-    amharicTitle: "ደመና ደህንነት",
+    amharicTitle: "ክላውድ ደህንነት",
     description: "Cloud security solutions optimized for Ethiopia's internet infrastructure and regulations.",
     features: [
       "Local Cloud Integration", 
